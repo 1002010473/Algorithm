@@ -17,9 +17,7 @@ package Other.知识点;
 public class 二分查找 {
     public static void main(String[] args){
         int[] arr = {1,2,3,3,3,3,3,3,3,4,5,6};
-        //System.out.println(findLeft(arr,3));
-        //System.out.println(findRight(arr,5));
-        System.out.println(search(arr,3)); // 二分查找
+        System.out.println(search_a(arr,3)); // 二分查找
         System.out.println(left_bound(arr,1)); //新版左边界查找
         System.out.println(right_bound(arr,6)); //新版右边界查找
     }
@@ -40,22 +38,6 @@ public class 二分查找 {
         return -1;
     }
 
-    public static int search(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length-1;
-        //退出循环的条件就是该 已经将left=right处的值确认完毕了
-        while(left<=right){
-            int mid = left+((right-left)>>1);
-            if(nums[mid]==target)
-                return mid;
-            else if(nums[mid]<target){
-                left = mid+1;
-            }else{
-                right = mid-1;
-            }
-        }
-        return -1;
-    }
     //右边界查找  -- 分析见leetcode 740 相关题解
     //另：lc 744
     static int right_bound(int[] nums, int target) {
@@ -71,8 +53,11 @@ public class 二分查找 {
                 left = mid + 1;
             }
         }
-        // 检查 right 越界的情况(退出循环的条件：left >  right)  当 target 比所有元素都小时，right 会被减到 -1
-        //并且排除 数组中没有target的情况
+        // 检查
+        // 退出循环的条件：left > right
+        // 当target比所有元素都小时，right 会被减到 -1
+        // 当target比所有元素都大时，left 会被加到 nums.length, right = length-1
+        // 如果除去上述两种情况，数组中还没有target
         if (right < 0 || nums[right] != target)
             return -1;
         return right;
@@ -100,7 +85,7 @@ public class 二分查找 {
 
 
 
-    //旧版边界查找，不推荐
+    /*//旧版边界查找，不推荐
     public static int findLeft(int[] nums, int target){
         int l = 0;
         int r = nums.length-1;
@@ -142,5 +127,5 @@ public class 二分查找 {
                 return -1;
         }
         return left-1; //右边界返回left-1； --联系 == 情况时 left 的变动情况
-    }
+    }*/
 }

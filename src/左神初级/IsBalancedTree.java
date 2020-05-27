@@ -12,7 +12,7 @@ import util.BinaryTreeNode;
  * @author: 文琛
  * @time: 2020/2/22 22:26
  */
-public class 判断二叉树是否平衡0 {
+public class IsBalancedTree {
     class ReturnData{
         int val;
         boolean isB;
@@ -26,18 +26,20 @@ public class 判断二叉树是否平衡0 {
 
     }
     public ReturnData method(BinaryTreeNode node){
-        if(node==null) return new ReturnData(0,true);
+        if(node==null)
+            return new ReturnData(0,true);
+        //左
         ReturnData leftDa = method(node.leftNode);
-        if(!leftDa.isB){
+        if(!leftDa.isB)
             return new ReturnData(0,false);
-        }
+        //右
         ReturnData rightDa = method(node.rightNode);
-        if(!rightDa.isB){
+        if(!rightDa.isB)
             return new ReturnData(0,false);
-        }
-        if(Math.abs(leftDa.val-rightDa.val)>1){
+        //整体
+        if(Math.abs(leftDa.val-rightDa.val)>1)
             return new ReturnData(0,false);
-        }
+
         return new ReturnData(Math.max(leftDa.val,rightDa.val)+1,true);
     }
 }

@@ -9,8 +9,6 @@ import java.util.*;
  *重点难点 ： 非递归的实现
  * 其中： 先序 最简单 中序遍历稍复杂，先序和中序的遍历过程中都经过父节点两次 -- 后序遍历只能经过一次，较为困难--
  *      因此 后序遍历通过增加两个栈实现，是在先序遍历的基础上进行的变更---辅助栈实现打印顺序的反转（先序遍历--中左右==变更左右压栈顺序--中右左==压入第二个栈中进行反转--左右中）
- *
- *
  *      二叉树用递归非常方便===递归方法会经过二叉树中节点三次！！！！
  *
  * @author: 文琛
@@ -19,17 +17,7 @@ import java.util.*;
 public class Traverse {
     static List<List<Integer>> levList;
     public static void main(String[] args) {
-        BinaryTreeNode a = new BinaryTreeNode(10);
-        BinaryTreeNode b = new BinaryTreeNode(6);
-        BinaryTreeNode c = new BinaryTreeNode(14);
-        BinaryTreeNode d = new BinaryTreeNode(4);
-        BinaryTreeNode e = new BinaryTreeNode(8);
-        BinaryTreeNode f = new BinaryTreeNode(12);
-        a.leftNode = b;
-        b.leftNode = d;
-        a.rightNode = c;
-        b.rightNode = e;
-        c.leftNode = f;
+        BinaryTreeNode a = BinaryTreeNode.BSTFactory();
         a.printTree();//         中序 递归 （未传入参数的递归）
         System.out.println();
         midPrintTree(a);//       中序 递归（传参）
@@ -46,6 +34,7 @@ public class Traverse {
         System.out.println();
         endPrintTree_(a); //     后序 循环
         System.out.println();
+
         System.out.println("层序 递归 实现");
         levelPrintTree(a);  //    层序 递归
         for (List<Integer> list : levList) {
@@ -103,7 +92,6 @@ public class Traverse {
             return;
         //栈
         Deque<BinaryTreeNode> stack = new LinkedList<>();
-        //Stack<BinaryTreeNode> stack = new Stack<>();
         stack.addFirst(root);//removeFirst--先进先出
         while(!stack.isEmpty()){
             root = stack.removeFirst();
@@ -120,34 +108,34 @@ public class Traverse {
         if(root == null)
             return;
         System.out.print("after-order-非递归：");
-        Deque<BinaryTreeNode> deque1 = new LinkedList<>();
-        Deque<BinaryTreeNode> deque2 = new LinkedList<>();//进行弹出顺序反转的辅助栈
+        Deque<BinaryTreeNode> stack1 = new LinkedList<>();
+        Deque<BinaryTreeNode> stack2 = new LinkedList<>();//进行弹出顺序反转的辅助栈
         //按照先序遍历的结构，仅反转左右子节点的压入顺序
-        deque1.addFirst(root);
-        while(!deque1.isEmpty()){
-            root = deque1.removeFirst();
+        stack1.addFirst(root);
+        while(!stack1.isEmpty()){
+            root = stack1.removeFirst();
             //并将1弹出的节点不再直接打印，而是压入辅助栈
-            deque2.addFirst(root);
+            stack2.addFirst(root);
             if(root.leftNode!=null)
-                deque1.addFirst(root.leftNode);
+                stack1.addFirst(root.leftNode);
             if(root.rightNode!=null)
-                deque1.addFirst(root.rightNode);
+                stack1.addFirst(root.rightNode);
         }
-        while(!deque2.isEmpty()){
-            System.out.print(deque2.removeFirst().value+" ");
+        while(!stack2.isEmpty()){
+            System.out.print(stack2.removeFirst().value+" ");
         }
     }
 
-    private static void PrintTree_(BinaryTreeNode root) {
+    private static void PrintTree_(BinaryTreeNode root) { // 每个节点两次经过，在第二次经过（弹出的时候）打印
+        System.out.print("mid-order-非递归：");
         if(root == null)
             return;
-        System.out.print("mid-order-非递归：");
         Deque<BinaryTreeNode> stack = new LinkedList<>();
-        while(!stack.isEmpty() || root!=null){
+        while(!stack.isEmpty() || root!=null){ // 当前节点不为null或者栈中还有元素
             if(root!=null){ // 当前节点不为空，压入栈中，继续向左节点移动
                 stack.addFirst(root);
                 root = root.leftNode;
-            }else { //当前节点为空，弹出节点（空节点的父节点或祖先节点）向节点的右子节点移动
+            }else { //当前节点为空，弹出节点（空节点的父节点或祖先节点）,打印，并向节点的右子节点移动
                 root = stack.removeFirst();
                 System.out.print(root.value+" ");
                 root = root.rightNode;

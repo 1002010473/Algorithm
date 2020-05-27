@@ -17,10 +17,10 @@ public class Selection {
     }
 
     private static void sort(int[] array) {
-        for (int i =0;i<array.length;i++){
+        for (int i = 0; i < array.length-1; i++){
             //min是指的下标
             int min = i;
-            for (int j = i ;j<array.length;j++){
+            for (int j = i+1 ;j<array.length;j++){
                 if (array[j]<array[min])
                     min = j;
             }
@@ -29,7 +29,7 @@ public class Selection {
     }
 
     public static void exchange(int[] array, int i, int min) {
-        if(i==min)
+        if(i == min)
             return;
         int temp = array[i];
         array[i] = array[min];

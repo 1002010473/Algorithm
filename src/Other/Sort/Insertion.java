@@ -18,9 +18,9 @@ public class Insertion {
 
     private static void sort(int[] array) {
         //左边都是有序的---第一位上天然有序，所以从1开始遍历
-        for (int i=1;i<array.length;i++){
+        for (int i = 1; i < array.length; i++){
             //继续循环的条件 -- j > 0 && array[j-1] > array[j]
-            for (int j=i;j>0 && array[j-1] > array[j];j--){
+            for (int j = i; j > 0 && array[j-1] > array[j]; j--){
                 exchange(array,j,j-1);
             }
         }

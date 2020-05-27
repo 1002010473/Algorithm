@@ -44,7 +44,6 @@ public class Merge {
         }
     }
 
-
     //自顶向下的递归排序
     private static void sort_TopToBottom(int[] array) {
         int N = array.length;

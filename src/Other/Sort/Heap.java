@@ -21,7 +21,6 @@ public class Heap {
         for (int i : array) {
             System.out.println(i);
         }
-
     }
 
     private static void sort(int[] array) {
@@ -36,9 +35,6 @@ public class Heap {
             exch(array,0,--size);
             heapify(array,0,size);
         }
-
-
-
     }
 
     private static void exch(int[] array, int i, int N) {

@@ -22,7 +22,8 @@ public class Bubble {
     //设置标志位
     private static void sort_(int[] array) {
         //特判
-        if(array==null|| array.length<2) return;
+        if(array == null|| array.length < 2)
+            return;
         //标志位
         boolean hasSwaped ;
         for (int i =0;i<array.length-1;i++){
@@ -35,7 +36,8 @@ public class Bubble {
                     hasSwaped = true;
                 }
             }
-            if (!hasSwaped) return ;
+            if (!hasSwaped)
+                return ;
         }
     }
 
