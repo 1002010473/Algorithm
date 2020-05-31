@@ -2,12 +2,19 @@ package 左神进阶.原始代码.advanced_class_03;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+/**
+ * @description: 跳表 代码有问题
+ * @param
+ * @return:
+ * @author: Vincent
+ * @time: 2020/5/31 17:18
+ */
 
 public class Code_02_SkipList {
-
+	//跳表node类
 	public static class SkipListNode {
 		public Integer value;
-		public ArrayList<SkipListNode> nextNodes;
+		public ArrayList<SkipListNode> nextNodes;//arraylist的大小代表了当前节点层数，[0]指向顶层的下一个node
 
 		public SkipListNode(Integer value) {
 			this.value = value;

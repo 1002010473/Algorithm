@@ -45,7 +45,7 @@ public class Code_07_IsBSTAndCBT {
 		}
 		return res;
 	}
-
+	//complete BinaryTree
 	public static boolean isCBT(Node head) {
 		if (head == null) {
 			return true;

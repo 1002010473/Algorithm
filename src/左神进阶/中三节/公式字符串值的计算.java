@@ -1,4 +1,4 @@
-package 左神进阶.原始代码.advanced_class_04;
+package 左神进阶.中三节;
 /**
  * @description: 得到作为公式的字符串所代表的值，公式里面只存在整数、加减乘除、括号
  * ps：公式肯定正确，无需校验+不考虑溢出
@@ -17,7 +17,7 @@ package 左神进阶.原始代码.advanced_class_04;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class Code_07_ExpressionCompute {
+public class 公式字符串值的计算 {
 
 	public static int getValue(String str) {
 		return value(str.toCharArray(), 0)[0];
