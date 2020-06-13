@@ -23,6 +23,7 @@ public class lc309_需要冷却期的股票交易 {
         return fun1(prices, 0);
     }
     //递归主体：以index开头的最大利润
+    //index作为开头，只有两种状态：买入，放弃
     private static int fun1(int[] prices, int index) {
         int len = prices.length;
         //if(index == len-1) return 0;
