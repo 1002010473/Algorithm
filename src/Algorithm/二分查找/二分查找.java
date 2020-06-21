@@ -1,4 +1,4 @@
-package Algorithm;
+package Algorithm.二分查找;
 /**
  * @description: 常规查找--查找重复元素的最左边索引 查找重复元素的最右边索引
  *
@@ -77,9 +77,8 @@ public class 二分查找 {
                 right = mid - 1;
             }
         }
-        if(left >= nums.length || nums[left] != target){
+        if(left >= nums.length || nums[left] != target)
             return -1;
-        }
         return left;
     }
 

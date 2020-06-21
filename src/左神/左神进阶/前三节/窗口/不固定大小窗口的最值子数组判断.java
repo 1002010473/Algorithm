@@ -4,9 +4,9 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * @description:求给定数组中 最大值减去最小值 小于或等于 给定num的子数组（连续）的数量
+ * @description: 求给定数组中 最大值减去最小值 小于或等于 给定num的子数组（连续）的数量
  * 子数组所有可能性：00 01 02 03 04 ---- 0n | 11 12 13 ---1n | 22 23 24 --- 2n| 33------ == n的2次方
- *O（n）时间复杂度
+ * 要求O（n）时间复杂度
  * @author: 文琛
  * @time: 2020/5/22 22:46
  */
