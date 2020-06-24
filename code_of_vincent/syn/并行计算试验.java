@@ -1,3 +1,5 @@
+package syn;
+
 /**
  * @description:
  * @author: 文琛

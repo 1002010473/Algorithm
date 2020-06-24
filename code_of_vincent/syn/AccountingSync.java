@@ -1,3 +1,5 @@
+package syn;
+
 import java.util.concurrent.TimeUnit;
 
 /**
