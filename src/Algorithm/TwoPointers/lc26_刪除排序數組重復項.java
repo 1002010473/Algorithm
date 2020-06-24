@@ -1,6 +1,6 @@
 package Algorithm.TwoPointers;
 
-public class lc {
+public class lc26_刪除排序數組重復項 {
     public static void main(String[] args) {
         int[] nums = {1,1,1,2,2,3};
         System.out.println(removeDuplicates(nums));
