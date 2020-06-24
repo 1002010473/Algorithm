@@ -1,3 +1,5 @@
+package syn;
+
 public class MyThread extends Thread {
  
 	private int ticket = 10;
