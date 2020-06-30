@@ -22,6 +22,18 @@ public class ListNode {
         }
         System.out.println();
     }
+
+    public static ListNode getList(){
+        ListNode node1 = new ListNode();
+        ListNode node2 = new ListNode();
+        ListNode node3 = new ListNode();
+        node1.value = 111;
+        node2.value = 222;
+        node3.value = 333;
+        node1.next = node2;
+        node2.next = node3;
+        return node1;
+    }
     @Test
     public void test(){
         ListNode node1 = new ListNode();

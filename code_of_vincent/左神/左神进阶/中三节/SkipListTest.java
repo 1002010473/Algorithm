@@ -24,6 +24,7 @@ class SkipListNode {
      * value值是不会重复的
      */
     public Integer value;
+    //列表中 index位置处的node为对应level的nextnode
     public ArrayList<SkipListNode> nextNodes;
 
     public SkipListNode(Integer value) {
