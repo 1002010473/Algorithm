@@ -35,7 +35,7 @@ import java.util.List;
  * @author: 文琛
  * @time: 2020/6/15 9:53
  */
-public class TraverseByLevel {
+public class lc102_TraverseByLevel {
     public static void main(String[] args) {
         TreeNode root = TreeNode.getTree();
         method1(root);
