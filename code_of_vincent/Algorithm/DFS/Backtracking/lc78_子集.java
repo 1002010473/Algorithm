@@ -21,29 +21,22 @@ public class lc78_子集 {
             System.out.println();
         }
     }
-    //普通的组合套路上稍加改进即可：（不含重复元素）在长度到达阈值之前放入lists即可
+    //普通的组合套路上稍加改进即可：（不含重复元素）在长度到达阈值之前就要放入lists
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> lists = new ArrayList<>();
         if(nums == null || nums.length == 0)
             return lists;
         List<Integer> list = new ArrayList<>();
-        boolean[] used = new boolean[nums.length];
-        return method(nums, list, lists, used);
+        return method(nums, list, lists, -1);
     }
 
-    private static List<List<Integer>> method(int[] nums, List<Integer> list, List<List<Integer>> lists, boolean[] used) {
+    private static List<List<Integer>> method(int[] nums, List<Integer> list, List<List<Integer>> lists, int index) {
         //进来就保存即可
         List<Integer> l = new ArrayList<>(list);
         lists.add(l);
-        int index = nums.length-1;
-        while(index >= 0 && !used[index]){
-            index--;
-        }
         for(int i = index + 1; i < nums.length; i++){
-            used[i] = true;
             list.add(nums[i]);
-            method(nums, list, lists, used);
-            used[i] = false;
+            method(nums, list, lists, i);
             list.remove(list.size()-1);
         }
         return lists;

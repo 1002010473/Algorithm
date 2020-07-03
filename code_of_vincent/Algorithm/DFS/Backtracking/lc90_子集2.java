@@ -21,32 +21,23 @@ public class lc90_子集2 {
             System.out.println();
         }
     }
-    //元素重复需要考虑进去
+    //元素重复需要考虑进去---每一层（for循环）不出现重复的元素即可
     public static List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> lists = new ArrayList<>();
         if(nums == null || nums.length == 0)
             return lists;
         List<Integer> list = new ArrayList<>();
-        boolean[] used = new boolean[nums.length];
         Arrays.sort(nums);
-        return method(nums, list, lists, used);
+        return method(nums, list, lists, -1);
     }
-    private static List<List<Integer>> method(int[] nums, List<Integer> list, List<List<Integer>> lists, boolean[] used) {
+    private static List<List<Integer>> method(int[] nums, List<Integer> list, List<List<Integer>> lists, int index) {
         //进来就保存即可
         List<Integer> l = new ArrayList<>(list);
         lists.add(l);
-        int index = nums.length-1;
-        while(index >= 0 && !used[index]){
-            index--;
-        }
         for(int i = index + 1; i < nums.length; i++){
-            if(i > 0 && nums[i] == nums[i-1] && !used[i-1]){
-
-            }else{
-                used[i] = true;
+            if(i == index + 1 || nums[i] != nums[i-1] ){
                 list.add(nums[i]);
-                method(nums, list, lists, used);
-                used[i] = false;
+                method(nums, list, lists, i);
                 list.remove(list.size()-1);
             }
         }
