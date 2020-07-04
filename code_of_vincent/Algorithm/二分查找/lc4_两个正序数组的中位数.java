@@ -7,4 +7,7 @@ package Algorithm.二分查找;
  * @time: 2020/7/3 20:52
  */
 public class lc4_两个正序数组的中位数 {
+    public static void main(String[] args) {
+
+    }
 }
