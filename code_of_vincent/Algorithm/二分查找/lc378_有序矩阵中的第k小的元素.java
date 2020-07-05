@@ -1,7 +1,7 @@
 package Algorithm.二分查找;
 
 /**
- * @description:
+ * @description: 此问题同样存在于 KWayMerge 中，借助堆解决，将第一种方法的遍历比较的复杂度降为 log n
  * @author: 文琛
  * @time: 2020/7/3 17:26
  */
