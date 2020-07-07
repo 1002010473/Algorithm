@@ -14,18 +14,18 @@ public class lc416_分割等和子集 {
         System.out.println(method2(arr));
         System.out.println(method3(arr));
     }
-    //暴力递归：试（选择 + 状态）每个元素只有两种状态供选择，1 or 2
+    //暴力递归：试（选择 + 状态）每个元素只有两种状态供选择，1 or 2 -- 很巧妙哦，只需要凑出来half即可
     //超时
     private static boolean method1(int[] arr) {
         int sum = 0;
         for(int i : arr){
             sum += i;
         }
-        if(sum % 2 == 1) return false;
+        if(sum % 2 == 1)
+            return false;
         int half = sum / 2;
         return fun1(arr, 0, half);
     }
-
     private static boolean fun1(int[] arr, int index, int half) {
         if(half == 0)
             return true;
@@ -33,6 +33,7 @@ public class lc416_分割等和子集 {
             return false;
         return fun1(arr, index+1, half) || fun1(arr, index+1, half - arr[index]);
     }
+
     //备忘：首先尝试二维数组 0：代表无 1：代表false 2：代表true
     static int[][] tab;
     private static boolean method2(int[] arr) {
@@ -77,9 +78,6 @@ public class lc416_分割等和子集 {
         boolean[][] dp = new boolean[nums.length][half+1];
         for(int i = 0; i < nums.length; i++){
             dp[i][0] = true;
-        }
-        for(int j = 1; j < half; j++){
-            dp[nums.length-1][j] = false;
         }
         for(int i = nums.length-2; i >= 0; i--){
             for(int j = 1; j <= half; j++){

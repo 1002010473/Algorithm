@@ -88,7 +88,7 @@ public class GFG_01Knapsack {
             //开始处理
             int[][]tab = new int[n+1][W+1];
             for(int i = n; i >= 0; i--){
-                for(int j = 0; j <= W; j++){
+                for(int j = 0; j <= W; j++){//压缩为一维数组后，对于小于ws[i]的j无需计算-原封不动使用即可
                     if(i == n || j == 0){
                         //tab[i][j] = 0;
                     }else{
@@ -99,6 +99,7 @@ public class GFG_01Knapsack {
                     }
                 }
             }
+            //每个节点依赖的数据都是 i+1 行的列坐标较小的数，所以可以压缩空间复杂度为一位数组
             int res = tab[0][W];
             System.out.println(res);
         }
