@@ -1,4 +1,4 @@
-package Algorithm.dynamic_programming.零一背包问题;
+package Algorithm.dynamic_programming.背包问题;
 
 import java.util.Arrays;
 import java.util.Scanner;

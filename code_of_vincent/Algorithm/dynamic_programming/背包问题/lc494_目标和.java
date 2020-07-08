@@ -1,4 +1,4 @@
-package Algorithm.dynamic_programming;
+package Algorithm.dynamic_programming.背包问题;
 
 import java.util.HashMap;
 

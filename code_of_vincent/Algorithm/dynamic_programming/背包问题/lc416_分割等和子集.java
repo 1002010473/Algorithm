@@ -1,4 +1,4 @@
-package Algorithm.dynamic_programming;
+package Algorithm.dynamic_programming.背包问题;
 
 /**
  * @description: 给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等
@@ -67,7 +67,7 @@ public class lc416_分割等和子集 {
         }
         return flag;
     }
-    //dp
+    //dp --
     private static boolean method3(int[] nums) {
         int sum = 0;
         for(int i : nums){
@@ -89,5 +89,25 @@ public class lc416_分割等和子集 {
             }
         }
         return dp[0][half];
+    }
+    //dp：尝试改为一维数组
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        for(int i : nums){
+            sum += i;
+        }
+        if(sum % 2 == 1)
+            return false;
+        int half = sum / 2;
+        boolean[] dp = new boolean[half+1];
+        dp[0] = true;
+        if(nums[nums.length-1] <= half)
+            dp[nums[nums.length-1]] = true;
+        for(int i = nums.length-2; i >= 0; i--){
+            for(int j = half; j >= nums[i]; j--){ // 注意边界
+                dp[j] = dp[j] || dp[j-nums[i]];
+            }
+        }
+        return dp[half];
     }
 }

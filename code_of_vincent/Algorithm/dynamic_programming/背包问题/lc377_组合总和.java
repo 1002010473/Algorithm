@@ -1,8 +1,8 @@
-package Algorithm.dynamic_programming;
+package Algorithm.dynamic_programming.背包问题;
 
 /**
  * @description: 给定一个由正整数组成且不存在重复数字的数组，找出和为给定目标正整数的组合的个数。
- * 顺序不同的序列被视作不同的组合。
+ * 顺序不同的序列被视作不同的组合。 -- 所以，问的是 排列 的数目
  * @author: 文琛
  * @time: 2020/6/12 19:33
  * 素质三连：暴力递归 + 备忘 + dp
@@ -18,7 +18,7 @@ public class lc377_组合总和 {
         System.out.println(System.currentTimeMillis());
         System.out.println(method3(nums, target));
     }
-    //暴力递归：试，把所有的组合可能性都罗列出来
+    //暴力递归：试，把所有的排列的可能性都罗列出来
     //超时
     private static int method1(int[] nums, int target) {
         //base case

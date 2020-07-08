@@ -1,4 +1,4 @@
-package Algorithm.dynamic_programming;
+package Algorithm.dynamic_programming.背包问题;
 
 /**
  * @description:暴力递归改动态规划
@@ -91,7 +91,7 @@ public class lc322_零钱兑换 {
         return dp[amount] == amount + 1 ? -1 : dp[amount];
     }
 
-    //找出能凑出amount的所有coin组合数
+    //找出能凑出amount的所有coin组合数 -- 不建议
     //尝试的思路：每个coin所有可能的出现次数：0到正好小于amount的个数
     //1暴力递归
     public static int change1(int[] coins, int amount){
