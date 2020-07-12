@@ -1,0 +1,9 @@
+二分查找的概念-----无所谓有序，无所谓边界，排除就完事了
+
+lc162-- 
+https://leetcode-cn.com/problems/find-peak-element/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-39/
+
+不确定存在特定元素时，在查找左右边界方法中，left 和 right 分别落在可想像的那个坐标位置
+
+
+lc378
