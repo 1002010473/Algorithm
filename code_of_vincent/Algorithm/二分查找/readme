@@ -7,3 +7,12 @@ https://leetcode-cn.com/problems/find-peak-element/solution/xiang-xi-tong-su-de-
 
 
 lc378
+
+在left <= right 条件下，不可以存在 = 赋值
+
+在left < right 条件下
+
+1 如果length == 1，那么直接返回
+
+2 如果length > 1,那么终将来到left， right（left + 1）的情况下，并且left ！= right，所以必然 mid == left == right - 1
+可将该特殊情况作为判断的参考条件
