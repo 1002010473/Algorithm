@@ -3,7 +3,7 @@ package Algorithm.TopK;
 import java.util.PriorityQueue;
 
 /**
- * @description: 也可以尝试partation() 时间复杂度为 n
+ * @description: 也可以尝试partation() 时间复杂度为 n --- 见dac
  * @author: 文琛
  * @time: 2020/7/4 11:35
  */
