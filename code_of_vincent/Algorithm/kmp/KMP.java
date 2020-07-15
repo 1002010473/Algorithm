@@ -1,4 +1,4 @@
-package 左神.左神进阶.前三节;
+package Algorithm.kmp;
 
 /**
  * @description:
