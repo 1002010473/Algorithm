@@ -1,4 +1,4 @@
-package Algorithm.TwoPointers;
+package Algorithm.twopointers;
 
 /**
  * @description: 荷兰国旗问题的简易版

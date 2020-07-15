@@ -1,4 +1,4 @@
-package Algorithm.TwoPointers;
+package Algorithm.twopointers.seq.target;
 
 import java.util.Arrays;
 
@@ -18,7 +18,7 @@ public class lc16_最接近的三数之和 {
     public static int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int res = nums[0] + nums[1] + nums[2];
-        int minDis = Math.abs(target - nums[0] - nums[1] - nums[2]);
+        int minDis = Math.abs(target - res);
         for(int i = 0; i < nums.length; i++){
             int head = nums[i];
             int left = i+1;
@@ -26,16 +26,16 @@ public class lc16_最接近的三数之和 {
             while(left < right){
                 int n = head + nums[left] + nums[right];
                 int distance = Math.abs(target - n);
-                if(distance < minDis){
-                    res = n;
-                    minDis = distance;
-                }
                 if(n == target){
-                    return res;
+                    return n;
                 }else if ( n < target){
                     left++;
                 }else{
                     right--;
+                }
+                if(distance < minDis){
+                    res = n;
+                    minDis = distance;
                 }
             }
         }

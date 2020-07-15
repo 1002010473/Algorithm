@@ -1,4 +1,4 @@
-package Algorithm.TwoPointers.Fast_SlowPointers;
+package Algorithm.twopointers.fastslow;
 
 /**
  * @description: 给定非空单链表，返回中间节点，如果中间节点存在两个，返回后者

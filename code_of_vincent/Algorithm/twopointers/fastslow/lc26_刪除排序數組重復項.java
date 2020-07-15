@@ -1,4 +1,4 @@
-package Algorithm.TwoPointers;
+package Algorithm.twopointers.fastslow;
 
 public class lc26_刪除排序數組重復項 {
     public static void main(String[] args) {

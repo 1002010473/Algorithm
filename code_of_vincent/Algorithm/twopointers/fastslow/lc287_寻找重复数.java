@@ -1,4 +1,4 @@
-package Algorithm.TwoPointers.Fast_SlowPointers;
+package Algorithm.twopointers.fastslow;
 
 /**
  * @description: 转换为寻找环形链表的入口节点 -- 另存在二分查找解法

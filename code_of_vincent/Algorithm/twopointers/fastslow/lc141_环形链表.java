@@ -1,4 +1,4 @@
-package Algorithm.TwoPointers.Fast_SlowPointers;
+package Algorithm.twopointers.fastslow;
 /**
  * @description: 判断链表中是否有环
  * @author: 文琛

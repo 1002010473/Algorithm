@@ -1,4 +1,4 @@
-package Algorithm.TwoPointers.Fast_SlowPointers;
+package Algorithm.twopointers.fastslow;
 
 import java.util.HashSet;
 

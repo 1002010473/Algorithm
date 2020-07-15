@@ -1,4 +1,4 @@
-package Algorithm.TwoPointers.Fast_SlowPointers;
+package Algorithm.twopointers.fastslow;
 
 /**
  * @description: 返回环形链表的入口节点
@@ -12,11 +12,7 @@ public class lc142_环形链表2 {
         ListNode slow = head, quick = head;
         while(quick != null){
             slow = slow.next;
-            if(quick.next == null){
-                quick = quick.next;
-            }else{
-                quick = quick.next.next;
-            }
+            quick = (quick.next == null ? null : quick.next.next);
             if(slow != null && slow == quick){
                 quick = head;
                 while(quick != slow){

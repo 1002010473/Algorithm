@@ -1,4 +1,4 @@
-package Algorithm.TwoPointers;
+package Algorithm.twopointers;
 
 /**
  * @description: 给定一个正整数数组 nums。
