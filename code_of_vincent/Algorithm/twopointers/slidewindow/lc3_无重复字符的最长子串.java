@@ -14,7 +14,7 @@ public class lc3_无重复字符的最长子串 {
         int i = 0;
         int j = 0;
         int res = 0;
-        while(j<s.length()){
+        while(j < s.length()){
             if(set.contains(s.charAt(j))){
                 set.remove(s.charAt(i++));
             }else{
