@@ -15,7 +15,7 @@ public class 反转链表2 {
         newHead.printOut();
     }
     //需要将head的next置为newhead的next--需要成员变量
-    static ListNode successor = null;
+    static ListNode successor; //保留真正的翻转点处的下个node
     public static ListNode reverseList(ListNode head, int count) {
         if(count == 1){
             successor = head.next;
@@ -23,7 +23,7 @@ public class 反转链表2 {
         }
         ListNode newHead = reverseList(head.next, count-1);
         head.next.next = head;
-        head.next = successor;
+        head.next = successor; //全是无用功，只是在头部最后一次时，将successor连接到头部的next
         return newHead;
     }
 

@@ -13,17 +13,17 @@ public class lc25_K个一组反转链表 {
         ListNode node = reverseKGroup(head, 2);
         node.printOut();
     }
-    //主体递归 + 反转递归
-    public static ListNode reverseKGroup(ListNode head, int k) {
+    //k内循环判断 + 递归K + 递归翻转
+    public static ListNode reverseKGroup(ListNode head, int k) { //返回自head开始的k个节点翻转后的newhead
         if(head == null) return null;
-        ListNode tail = head;
-        for(int i = k; i > 0; i--){
-            if(tail == null)
-                return head;
-            tail = tail.next;
+        ListNode cur = head;
+        for(int i = k; i > 0; i--){ //先定位好下个递归的起始节点
+            if(cur == null)
+                return head;//如果不够的话，直接将head返回即可
+            cur = cur.next;
         }
         ListNode newHead =  reverseList(head, k);
-        head.next = reverseKGroup(tail, k);
+        head.next = reverseKGroup(cur, k);
         return newHead;
     }
     //反转前k个

@@ -22,9 +22,9 @@ public class lc206_反转链表 {
         //建立当前节点和next节点的联系
         if(head == null || head.next == null)
             return head;
-        ListNode newHead = reverseList(head.next);
+        ListNode newHead = reverseList(head.next); //一路返回新的head，不做处理
         head.next.next = head;
-        head.next = null;
+        head.next = null; //只在最后一次，来到head的时候，才会发生
         return newHead;
     }
     //迭代：将递归中压栈的信息(pre)保留下来

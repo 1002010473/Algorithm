@@ -56,7 +56,7 @@ public class Queue_arr {
         private int remove(){
             if (length>0){
                 int remove = arr[0];
-                for (int j=0;j<length-1;j++){
+                for (int j=0;j<length-1;j++){ //循环替换
                     arr[j] = arr[j+1];
                 }
                 length--;
