@@ -1,5 +1,7 @@
 package test;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @description:
  * @author: 文琛
@@ -16,6 +18,9 @@ public class StringTest1 {
         String e = "A" + "C";
         String f;
         final String g;
+        StringBuilder sb = new StringBuilder();
+        StringBuffer sbf = new StringBuffer();
+        ConcurrentHashMap<String, Integer> ccmap = new ConcurrentHashMap<>();
 
 
         System.out.println(a == a1);

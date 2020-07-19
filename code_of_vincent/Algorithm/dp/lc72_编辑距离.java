@@ -9,6 +9,8 @@ package Algorithm.dp;
  *
  * 注意：word2是固定不变的
  *
+ * 此时不能只针对word1上的每个字符进行考虑，而是要和word2结合
+ *
  * 尝试素质三连
  *
  * @author: 文琛
@@ -53,8 +55,8 @@ public class lc72_编辑距离 {
         if(cs1[i] == cs2[j])
             return fun1(cs1, cs2, i+1, j+1);
         int minSteps = 0;
-        minSteps = Math.min(fun1(cs1, cs2, i, j+1), fun1(cs1, cs2, i+1, j));
-        minSteps = Math.min(minSteps, fun1(cs1, cs2, i+1, j+1));
+        minSteps = Math.min(fun1(cs1, cs2, i, j+1), fun1(cs1, cs2, i+1, j));//插入 | 删除
+        minSteps = Math.min(minSteps, fun1(cs1, cs2, i+1, j+1));//替换
         return minSteps+1;
     }
 
