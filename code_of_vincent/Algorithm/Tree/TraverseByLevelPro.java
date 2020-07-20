@@ -20,7 +20,7 @@ public class TraverseByLevelPro {
         if (root == null) return levels;
         Deque<TreeNode> queue = new LinkedList<TreeNode>();
         queue.addLast(root);
-        while ( !queue.isEmpty() ) {
+        while (!queue.isEmpty()) {
             // start the current level---新的一行
             List<Integer> list = new ArrayList<>();
             // number of elements in the current level -- 队列中现有元素，都属于当前行
@@ -28,12 +28,10 @@ public class TraverseByLevelPro {
             for(int i = 0; i < length; ++i) {  //通过length来控制只获取当前行内元素
                 TreeNode node = queue.removeFirst();
                 list.add(node.val);
-                // add child nodes of the current level
-                // in the queue for the next level
+                // add child nodes of the current level in the queue for the next level
                 if (node.left != null) queue.addLast(node.left);
                 if (node.right != null) queue.addLast(node.right);
             }
-            // go to next level
             levels.add(list);
         }
         return levels;
