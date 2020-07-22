@@ -12,7 +12,7 @@ public class KMP {
         System.out.println(getIndexOf(str1, str2));
     }
     public static int getIndexOf(String str1, String str2){
-        if(str1 == null || str2 == null || str2.length() < 1 || str2.length() >str1.length())
+        if(str1 == null || str2 == null || str2.length() < 1 || str2.length() > str1.length())
             return  -1;
         char[] s = str1.toCharArray();
         char[] m = str2.toCharArray();
