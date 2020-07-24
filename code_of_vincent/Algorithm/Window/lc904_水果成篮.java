@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @author: 文琛
  * @time: 2020/6/21 16:13
  */
-public class B04_lc904_水果成篮 {
+public class lc904_水果成篮 {
     public static void main(String[] args) {
         int[] nums = {3,3,3,1,2,1,1,2,3,3,4};
         System.out.println(totalFruit(nums));
