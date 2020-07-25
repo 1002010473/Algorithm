@@ -1,4 +1,4 @@
-package Algorithm.ReverseList;
+package Algorithm.list.reverseList;
 
 import DataStructure.ListNode;
 
