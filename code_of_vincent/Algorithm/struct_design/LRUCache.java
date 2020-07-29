@@ -3,9 +3,9 @@ package Algorithm.struct_design;
 import java.util.HashMap;
 import java.util.Map;
 
-/*O(1)时间复杂度内完成put 和 get （key， value）， 并且实现末位淘汰机制*/
+/*O(1)时间复杂度内完成put 和 get（key， value）， 并且实现末位淘汰机制*/
 //O1 主要由 hashmap 负责实现， 末尾淘汰通过双向链表实现
-//为什么使用双向链表 -- 方便通过虚拟tail的pre获取尾部节点
+//为什么使用双向链表 -- 方便在删除尾部节点时，可以通过虚拟tail的pre获取尾部节点---如果是单向链表，尾节点的更新操作需要遍历
 public class LRUCache {
     private Map<Integer, DLinkedNode> map;
     private int size;

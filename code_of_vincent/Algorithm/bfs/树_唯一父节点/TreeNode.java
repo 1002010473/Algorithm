@@ -1,4 +1,4 @@
-package Algorithm.BFS.树_唯一父节点;
+package Algorithm.bfs.树_唯一父节点;
 
 /**
  * @description:

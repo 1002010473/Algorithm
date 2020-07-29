@@ -1,6 +1,4 @@
-package Algorithm.BFS.树_唯一父节点;
-
-import sun.reflect.generics.tree.Tree;
+package Algorithm.bfs.树_唯一父节点;
 
 import java.util.Deque;
 import java.util.LinkedList;

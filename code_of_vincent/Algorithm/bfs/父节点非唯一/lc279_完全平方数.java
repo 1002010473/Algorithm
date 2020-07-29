@@ -1,4 +1,4 @@
-package Algorithm.BFS.父节点非唯一;
+package Algorithm.bfs.父节点非唯一;
 
 import java.util.Deque;
 import java.util.LinkedList;
