@@ -18,7 +18,7 @@ public class lc279_完全平方数 {
     //BFS:广度优先遍历，最小平方数的组合个数 == 最小步数，此处标记的是求和目标n
     //比dp快
     private static int method1(int n) {
-        boolean[] flags = new boolean[n+1];
+        boolean[] flags = new boolean[n+1];//作用：排除重复遍历
         Deque<Integer> queue = new LinkedList<>();
         queue.add(n);
         int steps = 0;

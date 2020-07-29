@@ -28,16 +28,16 @@ public class lc90_子集2 {
             return lists;
         List<Integer> list = new ArrayList<>();
         Arrays.sort(nums);
-        return method(nums, list, lists, -1);
+        return method(nums, list, lists, 0);
     }
     private static List<List<Integer>> method(int[] nums, List<Integer> list, List<List<Integer>> lists, int index) {
         //进来就保存即可
         List<Integer> l = new ArrayList<>(list);
         lists.add(l);
-        for(int i = index + 1; i < nums.length; i++){
-            if(i == index + 1 || nums[i] != nums[i-1] ){
+        for(int i = index; i < nums.length; i++){
+            if(i == index || nums[i] != nums[i-1] ){
                 list.add(nums[i]);
-                method(nums, list, lists, i);
+                method(nums, list, lists, i+1);
                 list.remove(list.size()-1);
             }
         }

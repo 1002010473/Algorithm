@@ -40,7 +40,7 @@ public class lc47_全排列2 {
         }
         for(int i = 0; i < nums.length; i++){
             if(!used[i]){
-                if(i > 0 && (nums[i] == nums[i-1]) && !used[i-1]){
+                if(i > 0 && (nums[i] == nums[i-1]) && !used[i-1]){ //在每个方法内，遍历过程中只会出现一次重复元素
 
                 }else{
                     list.add(nums[i]);

@@ -8,18 +8,16 @@ import java.util.List;
 /**
  * @description: 二叉树层序遍历 递归 (DFS) + 非递归（BFS）
  * BFS
- * BFS使用队列，把每个还没有搜索遍历到的点依次放入队列，然后弹出队列的头部元素当做当前遍历点。BFS共有两个模板：
+ * 使用队列，共有两个模板：
  *
- * 1 如果不需要确定当前遍历到了哪一层，BFS模板如下。
+ * 1 如果不需要确定当前遍历层数：
  * while queue 不空：
  *     cur = queue.pop()
  *     for 节点 in cur的所有相邻节点：
  *         if 该节点有效且未访问过：
  *             queue.push(该节点)
  *
- * 2 如果要确定当前遍历到了哪一层，BFS模板如下。
- *   这里增加了level表示当前遍历到的层数，也可理解为在一个图中，现在走了多少步。size表示在当前遍历层元素个数
- *   也就是队列中的元素数，我们把这些元素一次性遍历完，即把当前层的所有元素都向外走了一步。
+ * 2 如果要确定当前遍历到了哪一层：
  * level = 0
  * while queue 不空：
  *     size = queue.size()
@@ -30,7 +28,6 @@ import java.util.List;
  *                 queue.push(该节点)
  *     }
  *     level ++;
- *DFS
  *
  * @author: 文琛
  * @time: 2020/6/15 9:53
@@ -73,7 +70,7 @@ public class lc102_TraverseByLevel {
             System.out.println();
         }
     }
-    //递归：DFS
+    //递归：DFS -- 将节点的层数通过递归附加到节点上
     private static void method3(TreeNode root) {
         System.out.println("分层递归遍历：");
         if(root == null)
@@ -91,7 +88,7 @@ public class lc102_TraverseByLevel {
     private static void fun3(TreeNode root, int i, List<List<Integer>> list) {
         if(root == null)
             return;
-        while(list.size() < i){
+        if(list.size() < i){
             List<Integer> l = new ArrayList<>();
             list.add(l);
         }

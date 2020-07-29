@@ -2,6 +2,7 @@ package Algorithm.binary_search.gFunction;
 
 /**
  * @description: 在并不有序的数组上进行二分
+ * 给定一个输入数组 nums，其中 nums[i] ≠ nums[i+1]
  * @author: 文琛
  * @time: 2020/7/12 9:54
  */
@@ -11,11 +12,11 @@ public class lc162_寻找峰值 {
         //参考相关题解：见readme -- 排除的思想
         int left = 0, right = nums.length-1;
         while(left < right){
-            int mid = left + ((right - left) >>> 1); // 此处括号必不可少
+            int mid = left + ((right - left) >> 1);
             if(nums[mid] < nums[mid + 1]){
-                left = mid + 1; //将mid作为新的左边界对应的负无穷
-            }else{
-                right = mid; //将mid+1作为新的右边界对应的负无穷
+                left = mid + 1;
+            }else {
+                right = mid;
             }
         }
         return left;

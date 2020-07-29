@@ -1,6 +1,5 @@
 package Algorithm.DFS.Backtracking;
-// Java program to print all permutations
-// with respect to cases :按照原有的次序，变换大小写，打印所有的可能性字符串
+// Java program to print all permutations with respect to cases:按照原有的次序，变换大小写，打印所有的可能字符串
 
 public class GFG_PermuteString {
 	// Function to generate permutations 
@@ -23,11 +22,33 @@ public class GFG_PermuteString {
 			System.out.print(combination); 
 			System.out.print(" "); 
 		} 
-	} 
-	
+	}
+
+	static void permute1(String input) {
+		input = input.toLowerCase();
+		char cs[] = input.toCharArray();
+		StringBuilder sb = new StringBuilder();
+		method(cs, sb);
+	}
+
+	static void method(char[] cs, StringBuilder sb) {
+		int len = sb.length();
+		if(len == cs.length){
+			System.out.println(sb.toString());
+		}else{
+			sb.append(cs[len]);
+			method(cs, sb);
+			sb.deleteCharAt(sb.length()-1);
+			sb.append((char) (cs[len] - 32));
+			method(cs, sb);
+			sb.deleteCharAt(sb.length() - 1);
+		}
+	}
+
+
 	// Driver Program to test above function 
 	public static void main(String[] args) {
-		permute("ABC"); 
+		permute1("ABC");
 	} 
 } 
 

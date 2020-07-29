@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * @description: 给定两个单词（beginWord 和 endWord）和一个字典数组，找到
  * 从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：
- * 每次转换只能改变一个字母。
- * 转换过程中的中间单词必须是字典中的单词。
+ * 每次转换只能改变 一个字母 。
+ * 转换过程中的中间单词 必须 是字典中的单词。
 说明:
  * 如果不存在这样的转换序列，返回 0。
  * 所有单词具有相同的长度。
@@ -77,9 +77,7 @@ public class lc127_单词接龙 {
     public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
         if(!wordList.contains(endWord))
             return 0;
-        wordList.add(beginWord);
         boolean[] flags = new boolean[wordList.size()];
-        flags[flags.length-1] = true;
         Deque<String> queue = new LinkedList<>();
         queue.addLast(beginWord);
         int length = 0;
@@ -93,7 +91,7 @@ public class lc127_单词接龙 {
                 for(int i = 0; i < wordList.size(); i++){
                     if(!flags[i] && besides(s, wordList.get(i))){
                         queue.addLast(wordList.get(i));
-                        flags[i] = true;
+                        flags[i] = true; //此处BFS对于flags的应用
                     }
                 }
             }

@@ -8,7 +8,7 @@ package Algorithm.DFS.BinaryTree;
 public class lc437_路径总和3 {
     int res = 0;
     public int pathSum(TreeNode root, int sum) {
-        if(root==null)
+        if(root == null)
             return 0;
         method1(root, sum);
         return res;
@@ -22,8 +22,8 @@ public class lc437_路径总和3 {
     }
     public void method(TreeNode root,int sum){
         if(root==null)
-            return ;
-        if(root.val==sum)
+            return;
+        if(root.val == sum)
             res++;
         method(root.left,sum-root.val);
         method(root.right,sum-root.val);

@@ -27,16 +27,16 @@ public class lc78_子集 {
         if(nums == null || nums.length == 0)
             return lists;
         List<Integer> list = new ArrayList<>();
-        return method(nums, list, lists, -1);
+        return method(nums, list, lists, 0);
     }
 
     private static List<List<Integer>> method(int[] nums, List<Integer> list, List<List<Integer>> lists, int index) {
         //进来就保存即可
         List<Integer> l = new ArrayList<>(list);
         lists.add(l);
-        for(int i = index + 1; i < nums.length; i++){
+        for(int i = index; i < nums.length; i++){
             list.add(nums[i]);
-            method(nums, list, lists, i);
+            method(nums, list, lists, i+1);
             list.remove(list.size()-1);
         }
         return lists;
