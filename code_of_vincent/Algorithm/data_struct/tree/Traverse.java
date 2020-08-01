@@ -1,4 +1,4 @@
-package Algorithm.Tree;
+package Algorithm.data_struct.tree;
 
 import DataStructure.BinaryTreeNode;
 
@@ -84,12 +84,11 @@ public class Traverse {
         endPrintTree(root.rightNode);
         System.out.print(root.value+" ");
     }
-    //非递归实现
+    //非递归实现 -- DFS 深度优先
     private static void frontPrintTree_(BinaryTreeNode root) {
         //先序遍历 非递归--利用栈结构实现节点回溯
         System.out.print("pre-order-非递归：");
-        if(root == null)
-            return;
+        if(root == null) return;
         //栈--模拟实现一个节点经过两次--将right节点放置在栈中的合适位置(并没有回到之前的节点，但是可以找到rightnode，所以是模拟实现）
         Deque<BinaryTreeNode> stack = new LinkedList<>();
         stack.addFirst(root);//removeFirst--先进先出

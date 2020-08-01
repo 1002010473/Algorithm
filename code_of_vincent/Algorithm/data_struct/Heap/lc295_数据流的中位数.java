@@ -1,4 +1,4 @@
-package Algorithm.Heap;
+package Algorithm.data_struct.Heap;
 
 import java.util.PriorityQueue;
 

@@ -27,18 +27,17 @@ public class Quick {
 
     private static void sort_Quick(int[] array, int lo, int hi) {
         //递归的触底返回条件 --- hi == lo 时，已经是递归到单个元素上了，自然有序
-        if (hi <= lo)
-            return;
-        int j = partation(array,lo,hi);
+        if (lo >= hi)  return;
+        int j = partition(array,lo,hi);
         sort_Quick(array,lo,j-1);
         sort_Quick(array,j+1,hi);
     }
-    public static int partation(int[] arr, int lo, int hi){
+    public static int partition(int[] arr, int lo, int hi){
         int comp = arr[lo];
         int bound = lo;
         for(int i = lo + 1; i <= hi; i++){
-            if(arr[i] < comp){
-                bound++; // bound 所在位置就是小于等于当前comp的界限
+            if(arr[i] < comp){ //此处也可以是 <=,那么bound便是小于等于的边界
+                bound++; // bound 所在位置就是小于comp的界限
                 exchange(arr, bound, i);
             }
         }

@@ -1,4 +1,4 @@
-package Algorithm.Tree;
+package Algorithm.data_struct.tree;
 
 import java.util.ArrayList;
 import java.util.Deque;
@@ -16,9 +16,9 @@ public class TraverseByLevelPro {
     }
     public static List<List<Integer>> levelOrder(TreeNode root) {
         //升级版层级遍历 -- 需要将每一层的节点进行区分
-        List<List<Integer>> levels = new ArrayList<List<Integer>>();
+        List<List<Integer>> levels = new ArrayList<>();
         if (root == null) return levels;
-        Deque<TreeNode> queue = new LinkedList<TreeNode>();
+        Deque<TreeNode> queue = new LinkedList<>();
         queue.addLast(root);
         while (!queue.isEmpty()) {
             // start the current level---新的一行

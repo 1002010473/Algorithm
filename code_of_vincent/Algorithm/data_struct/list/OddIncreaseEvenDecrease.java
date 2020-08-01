@@ -1,4 +1,4 @@
-package Algorithm.list;
+package Algorithm.data_struct.list;
 
 
 public class OddIncreaseEvenDecrease {

@@ -1,4 +1,4 @@
-package Algorithm.Tree;
+package Algorithm.data_struct.tree;
 
 import org.junit.Test;
 

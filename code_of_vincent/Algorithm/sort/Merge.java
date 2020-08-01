@@ -43,7 +43,7 @@ public class Merge {
     public static void sort(int[] array, int lo, int hi) {
         if (lo >= hi)  return;
         int mid = lo + ((hi-lo) >> 1);
-        //左右排序+merge
+        //左右排序 + merge
         //其实全部的排序实现都在merge方法上
         sort(array,lo,mid);
         sort(array,mid+1,hi);

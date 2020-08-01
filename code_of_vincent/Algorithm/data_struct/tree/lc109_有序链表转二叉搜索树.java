@@ -1,4 +1,4 @@
-package Algorithm.Tree;
+package Algorithm.data_struct.tree;
 /**
  * @description: 思路很简单，就是递归将左右节点赋值给 mid 节点就可以了，每次递归的左右大小保持平衡，从而实现高度平衡
  * @author: 文琛

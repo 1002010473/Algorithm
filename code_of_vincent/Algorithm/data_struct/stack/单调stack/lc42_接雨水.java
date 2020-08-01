@@ -1,4 +1,4 @@
-package Algorithm.stack.单调stack;
+package Algorithm.data_struct.stack.单调stack;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -17,10 +17,10 @@ public class lc42_接雨水 {
         for(int i = 0; i < len; i++){
             while(!stack.isEmpty() && height[stack.peekLast()] < height[i]){
                 int bottom = height[stack.removeLast()];
-                if(stack.isEmpty()) break;
-                int weight = i - stack.peekLast() - 1;
-                int h = Math.min(height[i], height[stack.peekLast()]) - bottom;
-                res += h * weight;
+                if(stack.isEmpty())  break;
+                int width = i - stack.peekLast() - 1;
+                int hei = Math.min(height[i], height[stack.peekLast()]) - bottom;
+                res += hei * width;
             }
             stack.addLast(i);
         }

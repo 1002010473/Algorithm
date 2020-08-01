@@ -1,4 +1,4 @@
-package Algorithm.stack;
+package Algorithm.data_struct.stack;
 
 import java.util.Deque;
 import java.util.LinkedList;
