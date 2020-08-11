@@ -36,7 +36,7 @@ public class lc518_零钱兑换2 {
         }
         return res;
     }
-    //一维dp -- 78ms
+    //一维dp -- 78ms -- 二维简化为一维
     public int change1(int amount, int[] coins) {
         //思路是确定的，按照组合的遍历方法
         if(amount == 0)
