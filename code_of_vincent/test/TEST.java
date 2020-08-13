@@ -29,7 +29,13 @@ public class TEST {
         ccmap.putIfAbsent(1,1);
         ConcurrentMap<Integer, Integer> cmap = new ConcurrentHashMap<>();
         ExecutorService executorService = Executors.newCachedThreadPool();
-        /*FutureTask futureTask = new FutureTask();
-        futureTask.*/
+        /*FutureTask futureTask = new FutureTask(new Callable() {
+            @Override
+            public Object call() throws Exception {
+                return null;
+            }
+
+        });
+        futureTask.cancel();*/
     }
 }
