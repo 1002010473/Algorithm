@@ -10,32 +10,29 @@ import java.util.List;
  */
 public class ah {
     public static void main(String[] args) {
-        List<String> strings = generateParenthesis(3);
-        for(String s : strings){
-            System.out.println(s);
+        int[] arr = new int[]{0,1,2,4,5,7};
+        List<String> strings = summaryRanges(arr);
+        for (String string : strings) {
+            System.out.println(string);
         }
     }
-    public static List<String> generateParenthesis(int n) {
+    public static List<String> summaryRanges(int[] nums) {
         List<String> list = new ArrayList<>();
-        if(n == 0) return list;
-        StringBuilder sb = new StringBuilder();
-        method(sb, 0, 0, n, list);
+        //双指针
+        for(int i = 0, j = 1; j < nums.length; j++){
+            if(i == nums.length - 1){
+                list.add(nums[i] + "");
+                break;
+            }
+            if(nums[j] == nums[j - 1] + 1)
+                continue;
+            if(j == i + 1){
+                list.add(nums[i] + "");
+            }else{
+                list.add(nums[i] + "->" + nums[j - 1]);
+            }
+            i = j;
+        }
         return list;
     }
-    public static void method(StringBuilder sb, int left, int right, int n, List<String> list){
-        if(left == n && right == n){
-            list.add(sb.toString());
-            return;
-        }
-        if(left > n || right > n) return;
-        sb.append('(');
-        method(sb, left+1, right, n, list);
-        sb.deleteCharAt(sb.length() - 1);
-        if(left < right){
-            sb.append(')');
-            method(sb, left, right+1, n, list);
-            sb.deleteCharAt(sb.length() - 1);
-        }
-    }
-
 }

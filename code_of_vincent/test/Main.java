@@ -1,56 +1,70 @@
 package test;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @description:
  * @author: 文琛
- * @time: 2020/8/2 9:46
+ * @time: 2020/8/15 19:29
  */
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int count = sc.nextInt();
-        Deque<Integer> stack = new LinkedList<>();
-        List<Integer> list = new ArrayList<>();
-        for(int i = 0; i < count; i++){
-            int n = sc.nextInt();
-            while(!stack.isEmpty() && stack.peekLast() > n){
-                int r = stack.removeLast();
-                list.add(r);
-            }
-            stack.addLast(n);
+public class Main{
+    public static void main(String args[]){
+        Scanner cin = new Scanner(System.in);
+        while (cin.hasNext()){
+            WorkflowNode node = WorkflowNode.load(cin.next());
+            int res = method(node);
+            System.out.println(res);
         }
-        //按照单调增的栈来进行判断
-        int res = 0;
-        for(int i = 0; i < list.size(); i++){
-            int com = list.get(i);
-            res++;//基本的拿出来再放回去
-            if(!stack.isEmpty() && com > stack.peekFirst() && com < stack.peekLast()){
-                int left = 0, right = 0;
-                Deque<Integer> stack1 = new LinkedList<>(stack);
-                while(!stack1.isEmpty() && stack1.peekFirst() < com){
-                    stack1.removeFirst();
-                    left++;
-                }
-                while (!stack1.isEmpty() && stack1.peekLast() > com) {
-                    stack1.removeLast();
-                    right++;
-                }
-                if(left <= right){
-                    while(left-- > 0){
-                        stack.removeFirst();
-                    }
-                    res += left;
-                }else{
-                    while(right-- > 0){
-                        stack.removeLast();
-                    }
-                    res += right;
-                }
-            }
+    }
+    public static int method(WorkflowNode node){
+        if(node == null) return 0;
+        int value = node.timeoutMillis;
+        if(node.nextNodes == null) return value;
+        int sub = 0;
+        for(WorkflowNode n : node.nextNodes){
+            sub = Math.max(sub, method(n));
         }
-        System.out.println(res);
+        return value + sub;
+    }
+}
+class WorkflowNode {
+    String nodeId;
+    int timeoutMillis;
+    List<WorkflowNode> nextNodes;
+    boolean initialised;
+
+    public static WorkflowNode load(String value) {
+        // Create head node;
+        Map<String, WorkflowNode> map = new HashMap<>();
+        WorkflowNode head = new WorkflowNode("HEAD", 0, null);
+        map.put(head.nodeId, head);
+
+        for (String nodeValue : value.split("\\|")) {
+            String[] properties = nodeValue.split("\\`");
+            WorkflowNode node = map.get(properties[0]);
+
+            node.timeoutMillis = Integer.parseInt(properties[1]);
+            node.initialised = true;
+
+            // Check next nodes
+            if (properties[2].equals("END")) {
+                continue;
+            }
+            node.nextNodes = Arrays.stream(properties[2].split(","))
+                    .map(p -> new WorkflowNode(p, 0, null))
+                    .collect(Collectors.toList());
+            node.nextNodes.forEach(p -> map.put(p.nodeId, p));
+
+            map.put(node.nodeId, node);
+        }
+
+        return head;
     }
 
+    public WorkflowNode(String nodeId, int timeoutMillis, List<WorkflowNode> nextNodes) {
+        this.nodeId = nodeId;
+        this.timeoutMillis = timeoutMillis;
+        this.nextNodes = nextNodes;
+    }
 }

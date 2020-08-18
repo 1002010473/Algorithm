@@ -1,7 +1,12 @@
 package test;
 
+import javax.swing.*;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @description:
@@ -29,6 +34,9 @@ public class TEST {
         ccmap.putIfAbsent(1,1);
         ConcurrentMap<Integer, Integer> cmap = new ConcurrentHashMap<>();
         ExecutorService executorService = Executors.newCachedThreadPool();
+        Lock reentrantLock = new ReentrantLock();
+        reentrantLock.tryLock();
+        ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
         /*FutureTask futureTask = new FutureTask(new Callable() {
             @Override
             public Object call() throws Exception {
