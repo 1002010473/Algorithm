@@ -1,4 +1,4 @@
-package Algorithm.Window;
+package Algorithm.window;
 
 import java.util.Deque;
 import java.util.LinkedList;

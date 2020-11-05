@@ -1,4 +1,4 @@
-package Algorithm.binary_search.gFunction;
+package Algorithm.binary_search.acceleration;
 
 /**
  * @description: 类似于吃香蕉问题，求的是给定范围内满足条件的最小需求

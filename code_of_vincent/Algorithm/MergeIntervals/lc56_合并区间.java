@@ -1,4 +1,4 @@
-package Algorithm.MergeIntervals;
+package Algorithm.mergeIntervals;
 
 import java.util.*;
 

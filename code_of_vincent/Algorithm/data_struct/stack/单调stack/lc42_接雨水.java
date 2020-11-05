@@ -10,17 +10,21 @@ import java.util.LinkedList;
  */
 public class lc42_接雨水 {
     public int trap(int[] height) {
-        //尝试单调栈 -- 什么类型的栈才可以接住雨水 先减后增 -- 递减栈
+        //通过单点减栈实现
+        int len = height.length;
+        if(len < 3) return 0;
         Deque<Integer> stack = new LinkedList<>();
         int res = 0;
-        int len = height.length;
         for(int i = 0; i < len; i++){
-            while(!stack.isEmpty() && height[stack.peekLast()] < height[i]){
+            //相同的元素也要排除，这样在将其作为bottom时，只需要计算一次即可
+            while(!stack.isEmpty() && height[stack.peekLast()] <= height[i]){
                 int bottom = height[stack.removeLast()];
-                if(stack.isEmpty())  break;
-                int width = i - stack.peekLast() - 1;
-                int hei = Math.min(height[i], height[stack.peekLast()]) - bottom;
-                res += hei * width;
+                if(!stack.isEmpty()){
+                    int left = stack.peekLast();
+                    int width = i - left - 1;
+                    int top = Math.min(height[left], height[i]);
+                    res += width * (top - bottom);
+                }
             }
             stack.addLast(i);
         }

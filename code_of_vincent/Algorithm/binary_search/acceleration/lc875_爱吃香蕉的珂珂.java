@@ -1,4 +1,4 @@
-package Algorithm.binary_search.gFunction;
+package Algorithm.binary_search.acceleration;
 
 /**
  * @description: 二分查找进行加速遍历所有的速度可能 （上下限都已知）

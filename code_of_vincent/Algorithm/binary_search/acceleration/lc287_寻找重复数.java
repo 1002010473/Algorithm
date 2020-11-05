@@ -1,4 +1,4 @@
-package Algorithm.binary_search.gFunction;
+package Algorithm.binary_search.acceleration;
 
 /**
  * @description:

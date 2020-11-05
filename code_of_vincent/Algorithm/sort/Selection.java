@@ -17,11 +17,10 @@ public class Selection {
     }
 
     private static void sort(int[] array) {
-        for (int i = 0; i < array.length-1; i++){
-            //min是指的下标
+        for (int i = 0; i < array.length - 1; i++){//i作为内层循环的起始index
             int min = i;
-            for (int j = i+1 ;j<array.length;j++){
-                if (array[j]<array[min])
+            for (int j = i + 1; j < array.length; j++){
+                if (array[j] < array[min])
                     min = j;
             }
             exchange(array,i,min);

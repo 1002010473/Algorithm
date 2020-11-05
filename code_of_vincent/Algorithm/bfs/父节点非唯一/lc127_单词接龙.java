@@ -33,6 +33,34 @@ public class lc127_单词接龙 {
         System.out.println(ladderLength1(begin, end,list));
         System.out.println(ladderLength(begin, end,list));
     }
+
+    //BFS：广度优先遍历，通过队列来实现，碰到endword立即返回
+    //通过
+    public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if(!wordList.contains(endWord))
+            return 0;
+        boolean[] flags = new boolean[wordList.size()];
+        Deque<String> queue = new LinkedList<>();
+        queue.addLast(beginWord);
+        int length = 0;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            length++;
+            while(size-- > 0){
+                String s = queue.removeFirst();
+                if(endWord.equals(s))
+                    return length;
+                for(int i = 0; i < wordList.size(); i++){
+                    if(!flags[i] && besides(s, wordList.get(i))){
+                        queue.addLast(wordList.get(i));
+                        flags[i] = true; //此处BFS对于flags的应用
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
     //DFS : 深度优先遍历，递归压栈，返回path最小值
     //由于遍历数组和遍历字符串判断过于耗时而超时，lc题解中有相关改进，此处未更新
     public static int ladderLength1(String beginWord, String endWord, List<String> wordList) {
@@ -72,32 +100,7 @@ public class lc127_单词接龙 {
         return flag;
     }
 
-    //BFS：广度优先遍历，通过队列来实现，碰到endword立即返回
-    //通过
-    public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        if(!wordList.contains(endWord))
-            return 0;
-        boolean[] flags = new boolean[wordList.size()];
-        Deque<String> queue = new LinkedList<>();
-        queue.addLast(beginWord);
-        int length = 0;
-        while(!queue.isEmpty()){
-            int size = queue.size();
-            length++;
-            while(size-- > 0){
-                String s = queue.removeFirst();
-                if(endWord.equals(s))
-                    return length;
-                for(int i = 0; i < wordList.size(); i++){
-                    if(!flags[i] && besides(s, wordList.get(i))){
-                        queue.addLast(wordList.get(i));
-                        flags[i] = true; //此处BFS对于flags的应用
-                    }
-                }
-            }
-        }
-        return 0;
-    }
+
 
 
 }

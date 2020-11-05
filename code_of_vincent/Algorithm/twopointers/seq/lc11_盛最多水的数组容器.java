@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * @time: 2020/7/15 10:26
  */
 public class lc11_盛最多水的数组容器 {
-    //双指针 -- 推荐  证明见官方题解 -- 从较小的边界分析入手
+    //双指针 -- 推荐  证明见官方题解 -- 从较小的边界分析入手---状态消去
     public int maxArea(int[] height) {
         //双指针
         int len = height.length;
@@ -27,7 +27,7 @@ public class lc11_盛最多水的数组容器 {
     }
     //单调栈 -- 勉强通过
     public int maxArea1(int[] height) {
-        //尝试使用单调栈
+        //尝试使用单调栈--从前往后的单调减
         Deque<Integer> stack = new LinkedList<>();
         int len = height.length;
         int max = 0;

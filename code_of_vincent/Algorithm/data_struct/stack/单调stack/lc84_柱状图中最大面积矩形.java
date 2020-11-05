@@ -73,34 +73,38 @@ public class lc84_柱状图中最大面积矩形 {
     }
     //单调递增栈实现快速查找左右小于当前值的index
     public int largestRectangleArea3(int[] heights) {
-        int area = 0, n = heights.length;
-        // 遍历每个柱子，以当前柱子的高度作为矩形的高 h，
-        // 借助单调栈实现快速查找，而不是遍历获取
-        Deque<Integer> stack = new LinkedList<>();//单调增
-        stack.addLast(-1);
-        int[][] arr = new int[n][2];
-        for(int i = 0; i < n; i++){
-            while(stack.size() > 1 && heights[stack.peekLast()] >= heights[i]){
+        //首先将思路抓换到求最大面积，必然是某个柱子的水平延伸
+        int len = heights.length;
+        if(len < 1) return 0;
+        Deque<Integer> stack = new LinkedList<>();
+        int[] count = new int[len];
+        for(int j = len - 1; j >= 0; j--){
+            while(!stack.isEmpty() && heights[stack.peekLast()] >= heights[j]){
                 stack.removeLast();
             }
-            arr[i][0] = stack.peekLast(); // 左边第一个小于当前值的坐标
-            stack.addLast(i);
+            if(stack.isEmpty()){
+                count[j] = len;
+            }else{
+                count[j] = stack.peekLast();
+            }
+            stack.addLast(j);
         }
         stack.clear();
-        stack.addLast(n);
-        for(int i = n-1; i >= 0; i--){
-            while(stack.size() > 1 && heights[stack.peekLast()] >= heights[i]){
+        for(int i = 0; i < len; i++){
+            while(!stack.isEmpty() && heights[stack.peekLast()] >= heights[i]){
                 stack.removeLast();
             }
-            arr[i][1] = stack.peekLast(); // 右边第一个小于当前值的坐标
+            if(stack.isEmpty()){
+                count[i] -= -1;
+            }else{
+                count[i] -= stack.peekLast();
+            }
             stack.addLast(i);
         }
-        for(int i = 0; i < n; i++){
-            int weight = arr[i][1] - arr[i][0] - 1;
-            area = Math.max(area, weight * heights[i]);
+        int res = 0;
+        for(int i = 0; i < len; i++){
+            res = Math.max(res, (count[i] - 1) * heights[i]);
         }
-        return area;
+        return res;
     }
-
-
 }

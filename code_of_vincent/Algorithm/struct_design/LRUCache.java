@@ -6,6 +6,7 @@ import java.util.Map;
 /*O(1)时间复杂度内完成put 和 get（key， value）， 并且实现末位淘汰机制*/
 //O1 主要由 hashmap 负责实现， 末尾淘汰通过双向链表实现
 //为什么使用双向链表 -- 方便在删除尾部节点时，可以通过虚拟tail的pre获取尾部节点---如果是单向链表，尾节点的更新操作需要遍历
+//为什么map中已经有key了，还在node中嵌入key--方便通过node获取key，从而实现map中对应的定位（例如removeTail）
 public class LRUCache {
     private Map<Integer, DLinkedNode> map;
     private int size;
@@ -41,7 +42,7 @@ public class LRUCache {
             ++size;
             if (size > capacity) { // 如果超出容量，删除双向链表的尾部节点和hash表中的项
                 DLinkedNode tail = removeTail();
-                map.remove(tail.key);
+                map.remove(tail.key);//node -> key -> map
                 --size;
             }
         }
@@ -80,7 +81,7 @@ class DLinkedNode {
     int value;
     DLinkedNode prev;
     DLinkedNode next;
-    public DLinkedNode() {} //照顾head 和 tail
+    public DLinkedNode() {} //照顾 head 和 tail
     public DLinkedNode(int key, int value) {
         this.key = key;
         this.value = value;

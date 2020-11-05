@@ -40,4 +40,26 @@ public class lc32_最长有效括号 {
         }
         return res;
     }
+
+    //dp -- 相对来说比较复杂
+    public int longestValidParentheses1(String s) {
+        //尝试dp--dp[i]表示以i结尾的有效长度
+        if(s == null || s.length() == 0) return 0;
+        int len = s.length();
+        char[] cs = s.toCharArray();
+        int res = 0;
+        int[] dp = new int[len];
+        dp[0] = 0;
+        for(int i = 1; i < len; i++){
+            if(cs[i] != '('){
+                if(cs[i - 1] == '('){
+                    dp[i] = dp[Math.max(i - 2, 0)] + 2;
+                }else if(i - dp[i - 1] - 1 >= 0 && cs[i - dp[i - 1] - 1] == '('){
+                    dp[i] = dp[i - 1] + 2 + dp[Math.max(0, i - dp[i - 1] - 2)];
+                }
+                res = Math.max(res, dp[i]);
+            }
+        }
+        return res;
+    }
 }

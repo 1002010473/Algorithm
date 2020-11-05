@@ -11,12 +11,13 @@ package Algorithm.data_struct.array.matrix_rotate;
  * @time: 2020/8/1 11:21
  */
 public class lc48_旋转图像 {
+    //相对于矩形，正方形矩阵更加方便处理
     public void rotate(int[][] matrix) {
         //进行依次的四个边上对应元素的交换
         int n = matrix.length;
         for(int i = 0; i < n / 2; i++){
             int end = n - 1 - i;
-            for(int j = 0; j + i < end; j++){
+            for(int j = 0; j + i < end; j++){ // < end 而不是 <= end,即不能遍历到每排/列的最后
                 int num = matrix[i][i + j];
                 matrix[i][i + j] = matrix[end - j][i];
                 matrix[end - j][i] = matrix[end][end - j];

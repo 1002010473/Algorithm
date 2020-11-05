@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description:
+ * @description: 题目要求的只是将对应位置上的数字转换为字符而已，不算组合问题
  * @author: 文琛
  * @time: 2020/6/17 14:04
  */
@@ -25,7 +25,6 @@ public class lc17_9键的字母组合 {
         return method(digits, combinations, sb);
     }
     //将prefix 和 combinations 传入进去，任何递归过程中的修改都是操作的一个对象
-    //避免了将combinations作为成员变量的突兀
     //必须将prefix的改动复原
     public static List<String> method(String digits, List<String> combinations, StringBuilder prefix){
         int len = prefix.length();

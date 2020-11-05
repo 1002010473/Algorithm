@@ -13,9 +13,36 @@ public class lc33_旋转排序数组的搜索 {
         int[] a = {3,1};
         //System.out.println(search(a, 1));
     }
+    //直接在旋转的数组上进行查找
+    public int search(int[] nums, int target) {
+        int len = nums.length;
+        int left = 0, right = len - 1;
+        while(left <= right){
+
+            int mid = left +((right - left) / 2);
+            int n = nums[mid];
+
+            if(n == target) return mid;
+            //画图，将情况分析清楚就好了
+            if(n >= nums[left]){
+                if(target >= nums[left] && target < n){
+                    right = mid - 1;
+                }else{
+                    left = mid + 1;
+                }
+            }else{
+                if(target > n && target <= nums[right]){
+                    left = mid + 1;
+                }else{
+                    right = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
 
     //将153的思路拿来，数组分为左右两半，分别进行二分查找
-    public int search(int[] nums, int target) {
+    public int search1(int[] nums, int target) {
         if(nums == null || nums.length == 0)
             return -1;
         int len = nums.length;
@@ -60,59 +87,5 @@ public class lc33_旋转排序数组的搜索 {
         }
         return -1;
     }
-    //直接在旋转的数组上进行查找 -- 较为复杂 ： 不推荐
-    public static int search1(int[] nums, int target) {
-        if(nums == null || nums.length == 0)
-            return -1;
-        int len = nums.length;
-        int end = nums[len-1];
-        int head = nums[0];
-        if(target > end && target < head)
-            return -1;
-        int left = 0, right = len - 1;
-        while(left <= right){
-            //无法去除--不知为何
-            if(target == nums[left])
-                return left;
-            if(target == nums[right])
-                return right;
-            int mid = left + ((right - left) >>> 1);
-            int num = nums[mid];
-            if(num == target)
-                return mid;
-            if(nums[left] < nums[right]){ //位于递增的序列,常规的二分查找-可将时间复杂度降低（可省略，下文实现考虑了正常情况）
-                if(num < target){
-                    left = mid + 1;
-                }else{
-                    right = mid - 1;
-                }
-                continue;
-            }
-            //先增后减
-            if(num > nums[left]){ // mid落在了前半部上
-                if(target > num){
-                    left = mid + 1;
-                }else{
-                    if(target > nums[left]){
-                        right = mid - 1;
-                    }else{
-                        left = mid + 1;
-                    }
-                }
-            }else if(num < nums[left]){ // mid落在了后半部上
-                if(target < num){
-                    right = mid - 1;
-                }else{
-                    if(target < nums[right]){
-                        left = mid + 1;
-                    }else{
-                        right = mid - 1;
-                    }
-                }
-            }else{
-                left = mid  + 1;
-            }
-        }
-        return -1;
-    }
+
 }

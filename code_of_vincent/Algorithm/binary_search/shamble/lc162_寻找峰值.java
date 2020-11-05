@@ -1,8 +1,9 @@
-package Algorithm.binary_search.gFunction;
+package Algorithm.binary_search.shamble;
 
 /**
  * @description: 在并不有序的数组上进行二分
  * 给定一个输入数组 nums，其中 nums[i] ≠ nums[i+1]
+ * 可以假设 nums[-1] = nums[n] = -∞
  * @author: 文琛
  * @time: 2020/7/12 9:54
  */

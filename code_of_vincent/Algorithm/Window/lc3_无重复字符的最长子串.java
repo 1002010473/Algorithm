@@ -1,4 +1,4 @@
-package Algorithm.Window;
+package Algorithm.window;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,7 +31,7 @@ public class lc3_无重复字符的最长子串 {
             return 0;
         char[] cs = s.toCharArray();
         HashSet<Character> set = new HashSet<>();
-        int l = 0, r = 0;
+        int l = 0, r = 0;//起手式，本题目比较特殊，当r达到了len - 1之后，l无需继续变动，因为是求解的最大长度
         int maxLen = 0;
         while(r < cs.length){
             while(set.contains(cs[r])){

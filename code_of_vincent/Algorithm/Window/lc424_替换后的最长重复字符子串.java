@@ -1,4 +1,4 @@
-package Algorithm.Window;
+package Algorithm.window;
 
 /**
  * @description:

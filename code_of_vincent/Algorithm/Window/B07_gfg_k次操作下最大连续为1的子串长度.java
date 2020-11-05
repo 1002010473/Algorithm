@@ -1,6 +1,4 @@
-package Algorithm.Window;
-
-import java.util.Scanner;
+package Algorithm.window;
 
 /**
  * @description: Given a binary array a[] and a number k,

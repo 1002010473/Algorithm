@@ -1,4 +1,4 @@
-package Algorithm.bfs.树_唯一父节点;
+package Algorithm;
 
 /**
  * @description:
@@ -6,10 +6,11 @@ package Algorithm.bfs.树_唯一父节点;
  * @time: 2020/6/15 9:42
  */
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) {
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(){}
+    public TreeNode(int x) {
         val = x;
     }
     public static TreeNode getTree(){

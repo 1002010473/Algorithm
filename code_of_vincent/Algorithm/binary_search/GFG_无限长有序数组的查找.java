@@ -1,21 +1,22 @@
 package Algorithm.binary_search;
 // Java program to demonstrate working of an algorithm that finds an element in an
 // array of infinite size
+
 // Since array is sorted, the first thing clicks into mind is binary search,
 // but the problem here is that we don’t know size of array.
+
 // If the array is infinite, that means we don’t have proper bounds to apply binary search.
 // So in order to find position of key, first we find bounds and then apply binary search algorithm.
-//
+
 // Let low be pointing to 1st element and high pointing to 2nd element of array,
 // Now compare key with high index element,
 // -> if it is greater than high index element，copy high index in low index and double the high index.
 // -> if it is smaller, then apply binary search on high and low indices found.
 
 public class GFG_无限长有序数组的查找 {
-	// Simple binary search algorithm -- 递归版本
-	public static int binarySearch(int arr[], int l, int r, int x)
-	{ 
-		if (r>=l) {
+	//递归二分
+	public static int binarySearch(int arr[], int l, int r, int x) {
+		if (r >= l) {
 			int mid = l + (r - l)/2; 
 			if (arr[mid] == x) 
 				return mid; 
@@ -34,7 +35,7 @@ public class GFG_无限长有序数组的查找 {
 	public static int findPos(int arr[],int key)
 	{ 
 		int l = 0, h = 1; 
-		int val = arr[0];
+		int val = arr[1];
 		// Find h to do binary search 
 		while (val < key) {
 			l = h;	 // store previous high check that 2*h doesn't exceeds array length

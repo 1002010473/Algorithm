@@ -45,5 +45,9 @@ public class TEST {
 
         });*/
         //futureTask.cancel();
+
+        Object o;
+        LinkedList<Integer> linkedList;
+        ArrayList<Integer> al;
     }
 }

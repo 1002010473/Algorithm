@@ -39,8 +39,7 @@ public class lc15_三数之和 {
         for(int i = 0; i < nums.length-2; i++){ // i作为起始值，双指针必须在该点的右边活动
             int head = nums[i];
             if(head > 0)  break;
-            if(i > 0 && head == nums[i-1]) // 跳过重复元素
-                continue;
+            if(i > 0 && head == nums[i-1])  continue;// 跳过重复元素
             int l = i+1;
             int r = nums.length-1;
             while(l < r){

@@ -1,7 +1,5 @@
 package Algorithm.binary_search;
 
-import org.junit.Test;
-
 /**
  * @description: 常规查找--查找重复元素的最左边索引 查找重复元素的最右边索引
  *

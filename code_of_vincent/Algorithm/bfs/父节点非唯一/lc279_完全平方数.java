@@ -26,8 +26,7 @@ public class lc279_完全平方数 {
             int size = queue.size();
             while(size-- > 0){
                 int target = queue.removeFirst();
-                if(target == 0)
-                    return steps;
+                if(target == 0) return steps;
                 for(int j = 1; j * j <= target; j++){
                     int num = target - j * j;
                     if(!flags[num]) {

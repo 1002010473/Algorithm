@@ -21,34 +21,27 @@ public class lc39_和为target的组合 {
             System.out.println();
         }
     }
-    //还是组合的套路，不过添加了一个求和限制
+
+
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> lists = new ArrayList<>();
-        if(candidates == null || candidates.length == 0 || target == 0)
-            return lists;
-        boolean[] used = new boolean[candidates.length];
-        List<Integer> list = new ArrayList<>();
-        return method(candidates, target, list, used, lists);
+        List<Integer> list = new ArrayList();
+        method(lists, list, candidates, 0, target);
+        return lists;
     }
-
-    private static List<List<Integer>> method(int[] candidates, int target, List<Integer> list, boolean[] used, List<List<Integer>> lists) {
+    public static void method(List<List<Integer>> lists, List<Integer> list, int[] candidates, int index, int target){
         if(target == 0){
-            List<Integer> l = new ArrayList<>(list);
-            lists.add(l);
+            lists.add(new ArrayList<>(list));
+            return;
         }
-        int index = used.length-1;
-        while(index > 0 && !used[index]){
-            index--;
-        }
-        for(int i = index; i < used.length; i++){
-            if(target >= candidates[i]){
+        if(index == candidates.length)
+            return;
+        for(int i = index; i < candidates.length; i++){
+            if(candidates[i] <= target){ //这里必须加括号，不加则method会不受限制的进入
                 list.add(candidates[i]);
-                used[i] = true;
-                method(candidates, target - candidates[i], list, used, lists);
-                list.remove(list.size()-1);
-                used[i] = false;
+                method(lists, list, candidates, i, target - candidates[i]);
+                list.remove(list.size() - 1);
             }
         }
-        return lists;
     }
 }

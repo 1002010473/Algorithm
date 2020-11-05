@@ -1,9 +1,11 @@
 package Algorithm.bfs.树_唯一父节点;
 
+import Algorithm.TreeNode;
+
 import java.util.*;
 
 /**
- * @description:
+ * @description:  Collections.reverse(list)
  * @author: 文琛
  * @time: 2020/6/15 10:51
  */

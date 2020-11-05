@@ -1,14 +1,14 @@
-package test;
+package Algorithm.mergeIntervals;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description:
+ * @description: 将有序数组转换为 -> 表示的区间段
  * @author: 文琛
  * @time: 2020/7/27 10:43
  */
-public class ah {
+public class 连续区间的简化表示 {
     public static void main(String[] args) {
         int[] arr = new int[]{0,1,2,4,5,7};
         List<String> strings = summaryRanges(arr);
@@ -19,19 +19,20 @@ public class ah {
     public static List<String> summaryRanges(int[] nums) {
         List<String> list = new ArrayList<>();
         //双指针
-        for(int i = 0, j = 1; j < nums.length; j++){
-            if(i == nums.length - 1){
-                list.add(nums[i] + "");
-                break;
+        int start = 0;
+        while(start < nums.length){
+            int pre = nums[start];
+            int j = start;
+            while(j + 1 < nums.length && nums[j + 1] == pre + 1){
+                j++;
+                pre = nums[j];
             }
-            if(nums[j] == nums[j - 1] + 1)
-                continue;
-            if(j == i + 1){
-                list.add(nums[i] + "");
+            if(j != start){
+                list.add(nums[start] + "->" + nums[j]);
             }else{
-                list.add(nums[i] + "->" + nums[j - 1]);
+                list.add(nums[start] + "");
             }
-            i = j;
+            start = j + 1;
         }
         return list;
     }

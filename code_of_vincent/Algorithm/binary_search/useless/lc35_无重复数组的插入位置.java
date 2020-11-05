@@ -1,4 +1,4 @@
-package Algorithm.binary_search;
+package Algorithm.binary_search.useless;
 
 /**
  * @description:

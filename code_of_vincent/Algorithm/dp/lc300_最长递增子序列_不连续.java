@@ -12,7 +12,29 @@ public class lc300_最长递增子序列_不连续 {
         System.out.println(method1(data));
         System.out.println(method2(data));
         System.out.println(method3(data));
+        System.out.println(method(data));
     }
+    //重新做时，发现三部曲对本题较为繁琐，遂直接dp即可，从前往后，每个位置上都进行--和前面每个位置上的数据进行大小比对，如果
+    //前面的小，那么将该位置上的最大长度+1作为可选长度，前面元素全部遍历后，再取最大值
+    private static int method(int[] data) {
+        int len = data.length;
+        if(len == 0) return 0;
+        int res = 1;
+        int[] dp = new int[len];
+        for(int i = 0; i < len; i++){
+            int maxLen = 1;
+            for(int j = i - 1; j >= 0; j--){
+                if(data[j] < data[i]){
+                    maxLen = Math.max(maxLen, dp[j] + 1);
+                }
+            }
+            dp[i] = maxLen;
+            res = Math.max(res, maxLen);
+        }
+        return res;
+    }
+
+
     /*暴力递归：求给定数组的最长上升子序列，相当于求从data[i]开始的最长上升子序列长度的最大值，0位置上最大长度取决于
     后序数组中比data[0]要大的元素的最大长度+1
     验证超时

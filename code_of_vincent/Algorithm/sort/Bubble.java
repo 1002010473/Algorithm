@@ -43,10 +43,10 @@ public class Bubble {
 
     private static void sort(int[] array) {
         //外层遍历--从0到length-2（如果到了length-1，那么最后一次第二层循环并不执行）
-        for (int i =0;i<array.length-1;i++){
+        for (int i = 0;i < array.length - 1; i++){
             //内层遍历--从1到i对应上限（可以通过i=0时进行确定上限的具体表达式--例如：i=0,那么上限肯定是数组最后一位，所以j<length-i）
-            for (int j=1;j<array.length-i;j++){
-                if (array[j]<array[j-1]){
+            for (int j = 1;j < array.length - i; j++){
+                if (array[j] < array[j-1]){
                     int temp = array[j];
                     array[j] = array[j-1];
                     array[j-1] = temp;

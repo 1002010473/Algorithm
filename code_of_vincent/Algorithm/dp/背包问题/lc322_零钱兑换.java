@@ -7,7 +7,8 @@ package Algorithm.dp.背包问题;
  * 两种思路：最小硬币个数从amount出发：一维dp
  *          所有组合方案从数组每个元素出发：二维dp，每个元素依次考虑所有情况
  */
-public class lc322_零钱兑换 {
+public class
+lc322_零钱兑换 {
     public static void main(String[] args) {
         int[] coins = {1,2,5};
         //可组成的方案数

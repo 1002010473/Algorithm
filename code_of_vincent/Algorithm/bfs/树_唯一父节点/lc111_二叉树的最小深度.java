@@ -1,5 +1,7 @@
 package Algorithm.bfs.树_唯一父节点;
 
+import Algorithm.TreeNode;
+
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -18,8 +20,7 @@ public class lc111_二叉树的最小深度 {
     //BFS:非递归
     public static int minDepth(TreeNode root) {
         //层序遍历实现：碰到双null就返回
-        if(root == null)
-            return 0;
+        if(root == null) return 0;
         Deque<TreeNode> queue = new LinkedList<>();
         queue.addLast(root);
         int level = 1;
@@ -38,8 +39,7 @@ public class lc111_二叉树的最小深度 {
     }
     //DFS:递归
     public static int minDepth1(TreeNode root) {
-        if(root == null)
-            return 0;
+        if(root == null) return 0;
         int l = minDepth1(root.left);
         int r = minDepth1(root.right);
         if(root.left != null && root.right != null){

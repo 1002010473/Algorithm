@@ -1,7 +1,7 @@
-package Algorithm.binary_search;
+package Algorithm.binary_search.acceleration;
 
 /**
- * @description:
+ * @description: 返回省去小数位的int
  * @author: 文琛
  * @time: 2020/7/14 10:04
  */
@@ -22,7 +22,7 @@ public class lc69_平方根 {
                 right = mid - 1;
             }
         }
-        //分析最后情况，在left == right处相遇，那么根据tmp的情况出现三种选择，right适用其中两种情况
+        //如果没有 == ，那么left和right将来到各自对应的错位，此时的right必然就是result
         return (int)right;
     }
 }

@@ -1,5 +1,16 @@
 二分查找的概念-----无所谓有序，无所谓边界，排除就完事了
 
+两套模板
+left <= right
+left = mid + 1;
+right = mid - 1;
+
+left < right;
+left = mid + 1;
+right = mid;
+
+二分的递归版本 -- GFG_无限长有序数组的查找
+
 lc162-- 
 https://leetcode-cn.com/problems/find-peak-element/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-39/
 
@@ -16,3 +27,5 @@ lc378
 
 2 如果length > 1,那么终将来到left， right（left + 1）的情况下，并且left ！= right，所以必然 mid == left == right - 1
 可将该特殊情况作为判断的参考条件
+
+

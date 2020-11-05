@@ -1,5 +1,7 @@
 package Algorithm.bfs.树_唯一父节点;
 
+import Algorithm.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -35,7 +37,7 @@ import java.util.List;
 public class lc102_TraverseByLevel {
     public static void main(String[] args) {
         TreeNode root = TreeNode.getTree();
-        method1(root);
+        method1(root);//简单层序
         method2(root);
         method3(root);
     }
@@ -73,8 +75,7 @@ public class lc102_TraverseByLevel {
     //递归：DFS -- 将节点的层数通过递归附加到节点上
     private static void method3(TreeNode root) {
         System.out.println("分层递归遍历：");
-        if(root == null)
-            return;
+        if(root == null) return;
         List<List<Integer>> list = new ArrayList<>();
         fun3(root, 1, list);
         for(List<Integer> l : list){
@@ -86,8 +87,7 @@ public class lc102_TraverseByLevel {
     }
 
     private static void fun3(TreeNode root, int i, List<List<Integer>> list) {
-        if(root == null)
-            return;
+        if(root == null) return;
         if(list.size() < i){
             List<Integer> l = new ArrayList<>();
             list.add(l);
