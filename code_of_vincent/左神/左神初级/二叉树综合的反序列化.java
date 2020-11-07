@@ -9,7 +9,7 @@ package 左神.左神初级;
  * @author: 文琛
  * @time: 2020/2/22 22:00
  */
-public class 二叉树的序列化和反序列化 {
+public class 二叉树综合的反序列化 {
     //通过中序遍历和后序遍历结果确定二叉树
     public static void main(String[] args) {
         TreeNode treeNode = buildTree(new int[]{2, 1}, new int[]{2, 1});
