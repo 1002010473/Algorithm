@@ -19,7 +19,7 @@ https://leetcode-cn.com/problems/find-peak-element/solution/xiang-xi-tong-su-de-
 
 lc378
 
-在left <= right 条件下，不可以存在 = 赋值
+在left <= right 条件下，不可以存在 = mid
 
 在left < right 条件下
 

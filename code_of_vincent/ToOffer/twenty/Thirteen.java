@@ -1,91 +1,38 @@
 package ToOffer.twenty;
 
 /**
- * @description:
+ * @description:此处需要指出：该题目并不是需要找出矩阵中的所有节点，而是找出和0.0联通的节点数目
  * @author: 文琛
  * @time: 2019/11/29 14:48
  */
 public class Thirteen {
-    private static int number = 0 ;
-    public static void main(String[] args) {
-        int m = 2;
-        int n = 2;
-        int k = 1;
-        int[][] matrix = new int[m][n];
-        System.out.println(hasPath(matrix,k));
+    public int movingCount(int m, int n, int k) {
+        boolean[][] visited = new boolean[m][n];
+        return method(visited, 0, 0, k);
     }
 
-    /*public static boolean hasPath(char[][] matrix, String str) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        boolean[][] visited = new boolean[rows][cols];
-        int pathLength = 0;
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                if (hasPathCore(matrix, rows, cols, row, col, str, pathLength, visited))
-                    return true;
-            }
-        }
-        return false;
+    public int method(boolean[][] visited, int i, int j, int k){
+        if(i < 0 || j < 0 || i >= visited.length || j >= visited[0].length || visited[i][j] || judge(i, j, k))
+            return 0;
+        visited[i][j] = true;
+        int res = 1;
+        res += method(visited, i - 1, j, k);
+        res += method(visited, i + 1, j, k);
+        res += method(visited, i, j - 1, k);
+        res += method(visited, i, j + 1, k);
+        return res;
     }
 
-    // 上下左右递归搜索
-    private static boolean hasPathCore(char[][] matrix, int rows, int cols, int row, int col, String str,
-                                       int pathLength, boolean[][] visited) {
-        boolean hasPath = false;
-        if (pathLength > str.length() - 1)
-            return true;
-        if (row >= 0 && row < rows && col >= 0 && col < cols && matrix[row][col] == str.charAt(pathLength)
-                && !visited[row][col]) {
-            ++pathLength;
-            visited[row][col] = true;
-            hasPath = hasPathCore(matrix, rows, cols, row + 1, col, str, pathLength, visited)
-                    || hasPathCore(matrix, rows, cols, row, col + 1, str, pathLength, visited)
-                    || hasPathCore(matrix, rows, cols, row - 1, col, str, pathLength, visited)
-                    || hasPathCore(matrix, rows, cols, row, col - 1, str, pathLength, visited);
-            if (!hasPath) {
-                --pathLength;
-                visited[row][col] = false;
-            }
-        }
-        return hasPath;
-    }*/
-
-    private static int hasPath(int[][] matrix, int k) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        boolean[][] visited = new boolean[rows][cols];
-        int row = 0;
-        int col = 0;
-        canIComeIn(matrix,k,rows,cols,row,col,visited);//从 00 出发，寻找可进入的格子；
-        return number;
-    }
-
-    private static void canIComeIn(int[][] matrix, int k,int rows,int cols, int row, int col,boolean[][] visited) {
-
-
-        if (row >= 0 && row < rows && col >= 0 && col < cols && visited[row][col]==false){
-            matrix[row][col]= getDigitSum(row)+getDigitSum(col);
-            if (matrix[row][col]<k){
-                number++;
-                visited[row][col] = true;
-                canIComeIn(matrix, k, rows,cols,row-1, col,visited);
-                canIComeIn(matrix, k, rows,cols,row+1, col,visited);
-                canIComeIn(matrix, k, rows,cols,row, col-1,visited);
-                canIComeIn(matrix, k, rows,cols,row, col+1,visited);
-            }
-
-        }
-
-
-    }
-
-    private static int getDigitSum(int number) {
+    public boolean judge(int i, int j, int k){
         int sum = 0;
-        while (number>0){
-            sum+=number%10;
-            number/=10;
+        while(i > 0){
+            sum += i % 10;
+            i /= 10;
         }
-        return sum;
+        while(j > 0){
+            sum += j % 10;
+            j /= 10;
+        }
+        return sum > k;
     }
 }

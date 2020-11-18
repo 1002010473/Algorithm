@@ -20,7 +20,8 @@ package Algorithm.struct_design;
  * @time: 2020/7/18 15:51
  */
 public class Singleton {
-    private static volatile Singleton instance;
+    //因为getInstance是静态方法，所以instance也必须static修饰
+    static volatile Singleton instance;
 
     public static Singleton getInstance(){
         if(instance == null){

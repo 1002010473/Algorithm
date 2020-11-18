@@ -1,59 +1,44 @@
 package ToOffer.twenty;
 
 /**
- * @description:打印从1到最大的n位数；（大数问题）
+ * @description:打印从1到最大的n位数；（大数问题 + 字符++技巧）
  * @author: 文琛
  * @time: 2019/12/1 15:22
  */
 public class Seventeen {
-    public static boolean increment(int[] number) {
-        // 最高位产生进位标志
-        boolean isOverFlow = false;
-
-        // 进位位
-        int carry = 0;
-
-        for (int i = number.length - 1; i >= 0; i--) {
-            int sum = number[i] + carry;
-            if (i == number.length - 1) {
-                sum++;
-            }
-            if(sum >= 10){
-                if(i == 0)
-                    isOverFlow = true;
-                else{
-                    sum = sum - 10;
-                    carry = 1;
-                    number[i] = sum;
+    StringBuilder sb = new StringBuilder("0");;
+    int idx = 0;
+    //大数加法。通过sb实现
+    public boolean increment(int n){
+        boolean carry = false;
+        for(int i = 0; i < sb.length(); i++){
+            //如果i==0，那么需要加1，如果不为0，且没有进位，那么无需采取任何操作
+            if(carry || i == 0){
+                if(sb.charAt(i) == '9'){
+                    sb.setCharAt(i,'0');
+                    carry = true;
+                }else{
+                    sb.setCharAt(i,(char) (sb.charAt(i) + 1));
+                    carry = false;
                 }
-            }else{
-                number[i]++;
-                break;
             }
         }
-        return isOverFlow;
+        if(carry)
+            sb.append("1");
+        return sb.length() <= n;
     }
 
-    // 打印数组中表示的数，如果数组中表示的数字位数小于n，则不打印前面的0
-    public static void print(int[] number) {
-        // 标记：判断是否可以开始打印
-        boolean isBeginning = false;
-        for (int i = 0; i < number.length; i++) {
-            if (!isBeginning && number[i] != 0) {
-                isBeginning = true;
-            }
-            if (isBeginning)
-                System.out.print(number[i]);
+    public void save(int ans[]){
+        ans[idx] = Integer.parseInt(sb.reverse().toString());
+        sb.reverse();
+    }
+
+    public int[] printNumbers(int n) {
+        int[] ans = new int[(int) Math.pow(10,n) - 1];
+        while(increment(n)){
+            save(ans);
+            idx++;
         }
-        System.out.println();
+        return ans;
     }
-
-    public static void main(String[] args) {
-        //使用数组来模拟大数
-        int[] number = new int[3];
-        while(!increment(number)){
-            print(number);
-        }
-    }
-
 }

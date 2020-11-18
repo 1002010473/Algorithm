@@ -3,31 +3,32 @@ package ToOffer.ten;
 import DataStructure.ListNode;
 import org.junit.Test;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class Six {
-    /*方法1 ：
+    /*
     * 利用Stack栈进行颠倒
     * */
     public static void printReverse(ListNode node){
         if (node == null){
             System.out.println("您输入的链表为空");
         }
-        Stack<ListNode> nodes = new Stack<>();
+        Deque<Integer> stack = new LinkedList<>();
         while (node != null){
-            nodes.push(node);
+            stack.addLast(node.value);
             node = node.next;
         }
-        while (!nodes.isEmpty()){
-            System.out.println(nodes.pop().value);
+        while (!stack.isEmpty()){
+            System.out.println(stack.removeLast());
         }
     }
+    /*递归实现*/
     public static void printReverse_rec(ListNode node){
-        if (node!=null){
+        if (node != null){
             printReverse_rec(node.next);
             System.out.println(node.value);
-        }else{
-            return;
         }
     }
     @Test
@@ -42,7 +43,7 @@ public class Six {
         node2.next = node3;
         printReverse(node1);
         System.out.println("_______");
-        printReverse_rec(null);
+        printReverse_rec(node1);
 
     }
 }

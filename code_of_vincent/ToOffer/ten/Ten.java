@@ -7,7 +7,6 @@ public class Ten {
         int n = 2;
         int a = Fibonacci(n);
         System.out.println(a);
-
     }
     @Test
     public void mainTest(){
@@ -37,6 +36,5 @@ public class Ten {
             }
             return array[n];
         }
-
     }
 }

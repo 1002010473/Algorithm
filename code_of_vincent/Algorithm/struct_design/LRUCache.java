@@ -23,7 +23,6 @@ public class LRUCache {
         head.next = tail;
         tail.prev = head;
     }
-
     public int get(int key) {
         DLinkedNode node = map.get(key);
         if (node == null)
@@ -56,7 +55,7 @@ public class LRUCache {
     private void addToHead(DLinkedNode node) {
         node.prev = head;
         node.next = head.next;
-        head.next.prev = node;
+        node.next.prev = node;
         head.next = node;
     }
 
@@ -71,7 +70,7 @@ public class LRUCache {
     }
 
     private DLinkedNode removeTail() {
-        DLinkedNode res = tail.prev;
+        DLinkedNode res = tail.prev;//双向链表存在的价值：迅速确定tail之前的节点
         removeNode(res);
         return res;
     }

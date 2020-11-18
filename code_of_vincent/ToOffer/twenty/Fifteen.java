@@ -11,7 +11,16 @@ package ToOffer.twenty;
 public class Fifteen {
     public static void main(String[] args) {
         int n = 100;
-        System.out.println(n);
+        System.out.println(hammingWeight(n));
         System.out.println(Integer.toBinaryString(n));
+    }
+    public static int hammingWeight(int n) {
+        int res = 0;
+        while(n != 0){
+            if((n & 1) > 0)
+                res++;
+            n = n>>>1;
+        }
+        return res;
     }
 }

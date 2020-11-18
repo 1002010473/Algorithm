@@ -12,20 +12,40 @@ public class Fourteen {
         System.out.println(maxProductAfterCutting_0(8));
 
         System.out.println(maxProductAfterCutting_1(8));
-        //考虑在要求必须切分给定段数的基础上进行递归
-        System.out.println(progress(6,4));
+        //考虑在要求必须切分给定次数的基础上进行递归
+        System.out.println(progress(6,1));
     }
 
     private static int progress(int i, int j) {
-        if(j==0){
+        if(j == 0)
             return i;
-        }
         int max = 0;
         for(int l = 1; l < i; l++){
             int tem = l * progress(i-l,j-1);
-            max = Math.max(max,tem);
+            max = Math.max(max, tem);
         }
         return max;
+    }
+
+    private static int maxProductAfterCutting_0(int i) {
+        if (i<0) return -1;
+        if (i<2) return 0;
+        if (i==2) return 1;
+        if (i==3) return 2;
+
+        int[] array = new int[i+1];
+        array[1]=1;
+        array[2]=2;
+        array[3]=3;
+        int max = 0;
+        for (int x=4;x<=i;x++){
+            for (int y=1;y<=x/2;y++){
+                //int tem = array[y]*array[x-y];
+                max=Math.max(max,array[y]*array[x-y]);
+            }
+            array[x] = max;
+        }
+        return array[i];
     }
 
     //递归实现
@@ -49,28 +69,7 @@ public class Fourteen {
         return max;
     }
 
-    private static int maxProductAfterCutting_0(int i) {
-        if (i<0) return -1;
-        if (i<2) return 0;
-        if (i==2) return 1;
-        if (i==3) return 2;
 
-        int[] array = new int[i+1];
-        //array[0]=0;
-        array[1]=1;
-        array[2]=2;
-        array[3]=3;
-        int max = 0;
-        for (int x=4;x<=i;x++){
-            for (int y=1;y<=x/2;y++){
-                //int tem = array[y]*array[x-y];
-                max=Math.max(max,array[y]*array[x-y]);
-            }
-            array[x] = max;
-        }
-        return array[i];
-
-    }
 
     private static int maxProductAfterCutting(int i) {
         /**

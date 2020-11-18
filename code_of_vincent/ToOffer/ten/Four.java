@@ -1,10 +1,17 @@
 package ToOffer.ten;
+/**
+ * @description: 排除法，每个位置的移动分别代表了对应行/列的排除
+ * @param null
+ * @return:
+ * @author: Vincent
+ * @time: 2020/11/13 20:28
+ */
 
 public class Four {
     public static void main(String[] args) {
         //创建二维数组
         int[][] arr = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
-        boolean flag = findInt(arr, 16);
+        boolean flag = findInt(arr, 15);
         System.out.println(flag);
     }
     /*分析
@@ -20,21 +27,17 @@ public class Four {
         int row = arr.length;
         int line = arr[0].length;
         int i = 0;
-        int j = line-1;
-        boolean flag = false;
-        while (i < row && j>=0){
-            if (arr[i][j]==key){
-                flag = true;
-                break;
-            }else if (arr[i][j]>key){
+        int j = line - 1;
+        while (i < row && j >= 0){
+            if (arr[i][j] == key){
+                return true;
+            }else if (arr[i][j] > key){
                 j--;
-            }else if (arr[i][j]<key){
+            }else if (arr[i][j] < key){
                 i++;
             }
 
         }
-
-        return flag;
+        return false;
     }
-
 }

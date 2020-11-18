@@ -75,7 +75,7 @@ public class Merge {
         arr = new int[len];
         int i = 1;
         while (i < len){
-            for (int j = 0;j + i <= len; j += (2 * i)){
+            for (int j = 0;j + i < len; j += (2 * i)){ // 只有当 j+i < len, 即当存在后半比较区间时，才需要merge
                 merge(array,j,j+i-1,Math.min(j+i+i-1,len-1));
             }
             i = 2 * i;

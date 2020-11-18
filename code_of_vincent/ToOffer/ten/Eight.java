@@ -9,13 +9,16 @@ public class Eight {
         // 有右节点，找到右子树的最左节点
         if (node.right!= null) {
             node = node.right;
-            while(node.left != null) node = node.left;
+            while(node.left != null) {
+                node = node.left;
+            }
             return node;
         }
 
         // 无右节点，则向上遍历，直至找到节点为父节点的左子节点
         while(node.father != null) {
-            if (node.father.left == node) return node.father;
+            if (node.father.left == node)
+                return node.father;
             node = node.father;
         }
         return null;

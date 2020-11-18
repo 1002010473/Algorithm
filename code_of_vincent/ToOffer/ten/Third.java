@@ -1,81 +1,78 @@
 package ToOffer.ten;
 
-import org.junit.Test;
-
+/**
+ * @description: 考虑到题目特点：长度为n，数字范围0~n-1 找重复
+            每个位置上都有对应，所以可以通过位置对应来判断
+ * @param
+ * @return:
+ * @author: Vincent
+ * @time: 2020/11/13 19:52
+ */
 public class Third {
-    private static int [] duplication = new int[10];
+    static int ans;
     public static void main(String[] args) {
-        int[] arr = {2,3,2,0,2,5,3};
-        boolean a = findDuplication(arr);
-        System.out.println(a);
-        for (int i : duplication) {
-            System.out.println(i);
+        int[] arr = {2,3,1,2,4,5,3};
+        boolean flag = findDuplication(arr);
+        if(flag){
+            System.out.println(ans);
+        }else{
+            System.out.println("no duplication");
         }
-    }
-    @Test
-    public void test(){
-        int [] array = {2,3,5,4,3,2,6,7};
-        int a = getDuplication(array);
-        System.out.println(a);
+        System.out.println("----------------------");
+        int n = getDuplication(arr);
+        System.out.println(n);
     }
 
-
-    /*分析：
-    1 拿到一个数组，进行遍历，拿到每一个元素
-    2 将该元素和其索引进行比较
-            相同：不做任何处理
-            不同：将该元素和该元素作为索引时得到的元素进行比较
-                    相同：则判定为重复，输出
-                    不同：则交换
-    * */
     private static boolean findDuplication(int[] array){
-        int length = array.length;
-        int count = 0;
-        boolean flag = false;
-        for (int i = 0; i<length ; i++ ){
-            if(array[i] != i){
-                if (array[i]==array[array[i]]){
-                    flag = true;
-                    duplication[count++] =  array[i];
+        //特判
+        int len = array.length;
+        for(int a : array){
+            if(a < 0 || a > len - 1)
+                return false;
+        }
+        //核心逻辑
+        for(int i = 0; i < len; i++){
+            while(array[i] != i){
+                int n = array[i];
+                if(array[n] == n){
+                    ans = n;
+                    return true;
                 }else{
-                    int temp = array[i];
-                    array[i] = array[array[i]];
-                    array[temp] = temp;
+                    exchange(array, i, n);
                 }
             }
         }
-
-
-
-        return flag;
+        return false;
     }
 
+    private static void exchange(int[] array, int i, int n) {
+        int tmp = array[i];
+        array[i] = array[n];
+        array[n] = tmp;
+    }
+    //在不改变数组的前提下，采用二分法实现----注：完全采用二分的逻辑，在肯定存在结果的情况下，最后定位到重复的元素
+    //该题等同于lc287
     private static int getDuplication(int[] arr) {
-        int start = 1;
-        int end = arr.length - 1;
-        while(end >= start) {
-            int middle = (end - start) / 2 + start;
-            int count = getCount(arr, start, middle);
-            if (end == start) {
-                if (count > 1)
-                    return start;
-                else
-                    break;
+        int l = 1;
+        int r = arr.length - 1;
+        while(l < r) {
+            int mid = ((r - l) >> 1) + l;
+            int count = getCount(arr, l, mid);
+            if (count > mid - l + 1) {
+                r = mid;
+            }else{
+                l = mid + 1;
             }
-            if (count > middle - start + 1) {
-                end = middle;
-            }
-            else
-                start = middle + 1;
         }
-        return -1;
+        return l;
     }
 
     // 计算数组arr元素处在[start, end]范围内元素个数
     private static int getCount(int[] arr, int start, int end) {
         int count = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] >= start && arr[i] <= end) count++;
+            if (arr[i] >= start && arr[i] <= end)
+                count++;
         }
         return count;
     }

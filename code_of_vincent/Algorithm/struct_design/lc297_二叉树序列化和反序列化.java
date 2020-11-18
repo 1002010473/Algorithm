@@ -62,7 +62,7 @@ public class lc297_二叉树序列化和反序列化 {
         return root;
     }
 
-    //DFS
+    //DFS --- 结合了表示null节点的前序遍历结果，可以直接用来实现逆序列化
     // 重点在递归上
     public String serialize1(TreeNode root) {
         //DFS版本

@@ -36,8 +36,8 @@ public class Quick {
         int comp = arr[lo];
         int bound = lo;
         for(int i = lo + 1; i <= hi; i++){
-            if(arr[i] < comp){ //此处也可以是 <=,那么bound便是小于等于的边界
-                bound++; // bound 所在位置就是小于comp的界限
+            if(arr[i] <= comp){ //bound便是小于等于的边界
+                bound++; // 从bound向左，包括bound位置都小于等于com
                 exchange(arr, bound, i);
             }
         }

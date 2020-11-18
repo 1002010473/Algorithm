@@ -1,7 +1,7 @@
 package ToOffer.twenty;
 
 /**
- * @description:回溯法确定二维矩阵中的路径：难度++
+ * @description:回溯法确定二维矩阵中的路径：lc79
  * @author: 文琛
  * @time: 2019/11/29 14:02
  */
@@ -21,10 +21,9 @@ public class Twelve {
         int rows = matrix.length;
         int cols = matrix[0].length;
         boolean[][] visited = new boolean[rows][cols];
-        int pathLength = 0;
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                if (hasPathCore(matrix, rows, cols, row, col, str, pathLength, visited))
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (hasPathCore(matrix, i, j, str, 0, visited))
                     return true;
             }
         }
@@ -32,46 +31,26 @@ public class Twelve {
     }
 
     // 上下左右递归搜索
-    private static boolean hasPathCore(char[][] matrix, int rows, int cols, int row, int col, String str,
-                                       int pathLength, boolean[][] visited) {
-        /**
-         * @description:
-         * @param matrix 二维字符矩阵
-         * @param rows   矩阵的行数
-         * @param cols   矩阵的列数
-         * @param row    当前查找的行
-         * @param col    当前查找的列
-         * @param str    字符串对象
-         * @param pathLength  已经查找到的长度
-         * @param visited     映射的是否到过的矩阵
-         * @return: boolean
-         * @author: Vincent
-         * @time: 2019/11/29 14:12
-         */
-
-        boolean hasPath = false;
-        if (pathLength > str.length() - 1)
+    private static boolean hasPathCore(char[][] matrix, int row, int col, String str,
+                                       int index, boolean[][] visited) {
+        if (index == str.length())
             return true;
-        if (row >= 0 && row < rows && col >= 0 && col < cols && matrix[row][col] == str.charAt(pathLength)
-                && !visited[row][col]) {
-            ++pathLength;
-            visited[row][col] = true;
-            hasPath = hasPathCore(matrix, rows, cols, row + 1, col, str, pathLength, visited)
-                    || hasPathCore(matrix, rows, cols, row, col + 1, str, pathLength, visited)
-                    || hasPathCore(matrix, rows, cols, row - 1, col, str, pathLength, visited)
-                    || hasPathCore(matrix, rows, cols, row, col - 1, str, pathLength, visited);
-            if (!hasPath) {
-                --pathLength;
-                visited[row][col] = false;
-            }
-        }
+        if(row < 0 || row >= matrix.length || col < 0 || col >= matrix[0].length || matrix[row][col] != str.charAt(index))
+            return false;
+        index++;
+        visited[row][col] = true;
+        boolean hasPath = hasPathCore(matrix, row + 1, col, str, index, visited)
+                || hasPathCore(matrix, row, col + 1, str, index, visited)
+                || hasPathCore(matrix, row - 1, col, str, index, visited)
+                || hasPathCore(matrix, row, col - 1, str, index, visited);
+        visited[row][col] = false;
         return hasPath;
     }
 
     // 测试
     public static void main(String[] args) {
         char[][] matrix = { { 'a', 'b', 't', 'g' }, { 'c', 'f', 'c', 's' }, { 'j', 'd', 'e', 'h' } };
-        String str = "abfcea";
+        String str = "abfceh";
         System.out.println(hasPath(matrix, str));
     }
 

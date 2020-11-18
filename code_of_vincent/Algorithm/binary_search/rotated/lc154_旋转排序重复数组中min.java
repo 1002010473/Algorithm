@@ -7,13 +7,13 @@ package Algorithm.binary_search.rotated;
  */
 public class lc154_旋转排序重复数组中min {
     public static void main(String[] args) {
-        int[] nums = {2,2,2,0,1};
+        int[] nums = {2,2,2,1,2};
         System.out.println(findMin(nums));
     }
     public static int findMin(int[] nums) {
         int left = 0, right = nums.length - 1;
         while(left < right){
-            int mid = left + ((right - left) >>> 1);
+            int mid = left + ((right - left) >> 1);
             int tm = nums[mid];
             if(tm < nums[right]){
                 right = mid;
