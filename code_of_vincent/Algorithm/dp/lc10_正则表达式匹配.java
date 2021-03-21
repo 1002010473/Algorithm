@@ -54,7 +54,7 @@ public class lc10_正则表达式匹配 {
                 }else if(p.charAt(j - 1) == '*'){
                     if(p.charAt(j - 2) == s.charAt(i - 1) || p.charAt(j - 2) == '.'){
                         dp[i][j] = dp[i][j-2] || dp[i][j - 1] || dp[i - 1][j];
-                    }else{
+                    }else{//j-2：可以存在三种情况，要么等于i-1，要么等于.，要么不等于，由题意，不可能等于*
                         dp[i][j] = dp[i][j - 2];
                     }
                 }
